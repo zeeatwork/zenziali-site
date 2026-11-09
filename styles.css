@@ -1,0 +1,273 @@
+/* zenziali.com styles
+   Tokens come from the Portfolio Figma + QA Build Guide (Oct 2026). */
+
+:root {
+  --ink: #202628;
+  --deep-teal: #075e5a;
+  --warm-ivory: #faf9f6;
+  --white: #ffffff;
+  --warm-gray: #f2efe9;
+  --focus: #b9654b; /* Terracotta: 4.0:1 on ivory, enough for a focus ring */
+
+  --space-30: 0.67rem;
+  --space-40: 1rem;
+  --space-50: 1.5rem;
+  --space-60: 2.25rem;
+  --space-70: 3.38rem;
+  --space-80: 5.06rem;
+
+  --width-content: 700px;
+  --width-wide: 1160px;
+  --radius-card: 8px;
+
+  --h1: 4rem;      /* 64px */
+  --h2: 2.75rem;   /* 44px */
+  --h3: 2rem;      /* 32px */
+  --body: 1.25rem; /* 20px */
+  --small: 1rem;   /* 16px */
+}
+
+@media (max-width: 640px) {
+  :root {
+    --h1: 2.75rem;   /* 44px */
+    --h2: 2rem;      /* 32px */
+    --h3: 1.5rem;    /* 24px */
+    --body: 1.125rem; /* 18px */
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--warm-ivory);
+  color: var(--ink);
+  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: var(--body);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  margin: 0 0 var(--space-50);
+}
+
+h1 {
+  font-size: var(--h1);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: var(--h2);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: var(--h3);
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 var(--space-50);
+}
+
+a {
+  color: var(--deep-teal);
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: var(--space-40);
+  top: -100px;
+  background: var(--deep-teal);
+  color: var(--warm-ivory);
+  padding: var(--space-30) var(--space-40);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: var(--space-40);
+}
+
+/* Layout */
+.wrap {
+  width: 100%;
+  max-width: var(--width-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-40);
+}
+
+.wrap--content {
+  max-width: var(--width-content);
+}
+
+.section {
+  padding: var(--space-80) 0;
+}
+
+.section--gray {
+  background: var(--warm-gray);
+}
+
+.section--teal {
+  background: var(--deep-teal);
+  color: var(--warm-ivory);
+}
+
+.section--teal a:not(.button) {
+  color: var(--warm-ivory);
+}
+
+/* Header and nav */
+.site-header {
+  border-bottom: 1px solid rgba(32, 38, 40, 0.12);
+}
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-40);
+  padding-top: var(--space-50);
+  padding-bottom: var(--space-50);
+}
+
+.site-name {
+  font-size: var(--body);
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-50);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: var(--small);
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--deep-teal);
+  text-decoration: underline;
+}
+
+/* Eyebrow */
+.eyebrow {
+  font-size: var(--small);
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--deep-teal);
+  margin-bottom: var(--space-40);
+}
+
+.section--teal .eyebrow {
+  color: var(--warm-ivory);
+}
+
+/* Hero */
+.hero {
+  padding: var(--space-80) 0;
+}
+
+.hero .lead {
+  max-width: 40rem;
+}
+
+/* Buttons */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-40);
+  margin-top: var(--space-60);
+}
+
+.button {
+  display: inline-block;
+  font-size: var(--body);
+  line-height: 1.6;
+  padding: 15px 29px;
+  text-decoration: none;
+  border: 2px solid var(--deep-teal);
+}
+
+.button--primary {
+  background: var(--deep-teal);
+  color: var(--warm-ivory);
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--deep-teal);
+}
+
+.button--reversed {
+  background: var(--warm-ivory);
+  color: var(--deep-teal);
+  border-color: var(--warm-ivory);
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+/* Approach items */
+.approach-list {
+  display: grid;
+  gap: var(--space-60);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin-top: var(--space-60);
+}
+
+.approach-list h3 {
+  margin-bottom: var(--space-40);
+}
+
+/* Footer */
+.site-footer {
+  padding: var(--space-60) 0;
+  font-size: var(--small);
+}
+
+.site-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-50);
+  list-style: none;
+  margin: 0 0 var(--space-40);
+  padding: 0;
+}
