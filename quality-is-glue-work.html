@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quality Is Glue Work | Zenzi Ali</title>
+  <meta name="description" content="What a team of one can do for quality: mapping where a long-overdue project lost the thread, going back to the contract, and checking AI-drafted tests against their sources.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="index.html">Zenzi Ali</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="case-studies.html" aria-current="true">Case Studies</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="https://www.linkedin.com/in/zenziali">Connect on LinkedIn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="hero">
+        <div class="wrap wrap--content">
+          <p class="eyebrow">Case Study</p>
+          <h1>Quality Is Glue Work</h1>
+          <p>I've spent most of my QA career on very small teams. At one company, our testing team was a team of not quite two. At another, I was the first QA hire, and the test process was whatever I could build between releases.</p>
+          <p>Nobody hands a team of one a quality strategy. You notice where things fall through the cracks, like a requirement nobody tested or a bug that keeps coming back. Then you pick one crack and start filling it.</p>
+          <p>That's the part of QA that's hardest to put on a resume. So much of it is glue work: connecting what product asked for, what engineering built, and what we actually tested. It rarely gets credit. But when it's missing, everyone feels it.</p>
+        </div>
+      </header>
+
+      <section class="section section--article" aria-labelledby="scene-heading">
+        <div class="wrap wrap--content">
+          <h2 id="scene-heading">A meeting where I didn't say a word</h2>
+          <p>Soon after I was onboarded to a long-overdue client project, my manager (who was also head of product) asked me to sit in on a client status meeting. He wanted my first impression. I wasn't there to talk. I was there to watch.</p>
+          <p>As the developers demoed features, conversations started that should have happened months earlier. The code worked. It just didn't match the client's needs or the way they actually worked, and often the fix wasn't small. Sometimes ten hours of client time had gone into a feature that had nothing to do with the client's goals.</p>
+          <p>After each miss, the developer noted what went wrong and the implementation team went back to the client with more questions. Gaps stayed anyway. Questions moved like a game of telephone, from developer to product to implementation to client, and every round cost time.</p>
+          <p>I kept watching for a few weeks. When my manager acknowledged the project would be delayed again, I mapped it out literally: every step from a client conversation to a finished feature, and every hand and department it passed through before the client could review it. I also went through our CRM and found excellent notes going back more than a year. The deal itself had been in progress for about three years.</p>
+          <p>I wasn't on the project. But it mattered for revenue, the people were fantastic, and as the company's entire QA team, I wanted it to go well.</p>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="believe-heading">
+        <div class="wrap wrap--content">
+          <h2 id="believe-heading">What I believe</h2>
+          <p>You don't need a big team or a mandate to affect quality. Small things you build on make a difference, in the product and in the process around it.</p>
+          <p>Tanya Reilly's talk "Being Glue" describes the less visible work of connecting people, processes, and decisions that holds projects together but rarely gets credit. A lot of QA lives there. I think of it as process as glue work.</p>
+          <p>That meeting also showed me the gap I care most about: working code isn't the same as code that's fit for purpose. Verification asks whether we built it right. Validation asks whether we built the right thing. The demos were full of features that passed the first question and missed the second.</p>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="did-heading">
+        <div class="wrap wrap--content">
+          <h2 id="did-heading">What I did</h2>
+          <p>From the map, I picked out the two issues I saw as most critical: communication between product and engineering, and code that was verified without being validated.</p>
+          <p>Working on my own, I drafted a QA implementation plan in Confluence that introduced one concept roughly every eight weeks over the year. The earliest ideas were:</p>
+          <ul>
+            <li>A discussion and presentation on verification vs. validation.</li>
+            <li>Ensemble testing with engineering and product together, with an open invitation to the support team lead.</li>
+            <li>BDD concepts that help product and implementation confirm fitness for purpose: example mapping, OOPSI mapping, and feature mapping.</li>
+          </ul>
+          <p>Later stages covered what and how to test, and working with engineering on permanent test personas that other users couldn't easily edit.</p>
+          <p>In my next one-on-one, I showed my manager the map and the plan, but I focused on the change I thought would have the most impact: adding example mapping to the overdue project. I'd built an example mapping template for our team, and I was excited to share it.</p>
+          <p>He was enthusiastic and agreed with my read of the pain points. His challenge was buy-in. Product was three people, and every change needed time from implementation, engineering, and customer support. The overdue project was at a critical point, and everyone's time was already committed to it.</p>
+          <p>So I pivoted. Once I realized the plan wouldn't start in Q1 or Q2, I looked for work I could do alone that would support the project now and prepare the team for when it was over. Choosing test management software was already on my list, and once I had it, I wanted to put it to use.</p>
+          <p>There was no formal test plan when I arrived, and past Jira tickets couldn't be the source of truth. They were often written before a feature was shaped, and decisions happened in conversations that never made it back to the ticket. So I went back to what the company was actually accountable for: the original contract and its addendums. My manager had already decided to hold firm on deliveries (nothing added, only what was planned), which made the contract the right baseline.</p>
+          <p>I used ChatGPT to create test scripts from the contract and addendums. To check its work, I added a column asking for the source of each test and where it could be traced, down to the section and page (the automation section on page 33 of the original contract, for example). That let me confirm my initial tests traced exactly to the sections and addendum they should have. I also built a traceability matrix, because I wanted the test plan and the eventual test runs to trace in both directions.</p>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="changed-heading">
+        <div class="wrap wrap--content">
+          <h2 id="changed-heading">What it changed, and what I'd refine now</h2>
+          <p>None of the plan was introduced before the layoff, and the example mapping template was never used. That's the honest version.</p>
+          <p>The work I could do alone did happen: a test plan built on the agreement the team was accountable for, with each test traced back to its source.</p>
+          <p>Looking back, I wish I'd made my documentation more user-friendly as I went. I'd like to have left Confluence pages that let the team use any of these ideas, with a little help or without me at all. I'd also trade the one big presentation for a series of 15-minute talks before or after a standup or client meeting.</p>
+        </div>
+      </section>
+
+      <section class="section section--gray" aria-labelledby="takeaways-heading">
+        <div class="wrap wrap--content">
+          <h2 id="takeaways-heading">Take it with you</h2>
+          <ul class="takeaways">
+            <li><strong>Go back to the source.</strong> When tickets drift, test against the agreement your team is actually accountable for: the contract, its addendums, or the signed-off scope.</li>
+            <li><strong>Leave usable docs, and teach small.</strong> Write every idea up so the team can use it without you. Then pitch it in a 15-minute talk before or after standup instead of saving it for one big presentation.</li>
+            <li><strong>Make AI show its sources.</strong> When AI drafts tests from a document, add a column for where each test came from (section and page). Then spot-check a few against the original.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="forward-heading">
+        <div class="wrap wrap--content">
+          <h2 id="forward-heading">Looking forward</h2>
+          <p>The ChatGPT scripts are the part of this story I keep coming back to. The tool was useful because I could check it. One extra column turned its output into something I could trace, and tracing is the same glue work I'd been doing all along: connecting what was promised to what we test.</p>
+          <p>That's why I'm hopeful about AI in testing. I don't see it replacing the glue. I see it giving a small team more time for it, as long as we keep asking where each answer came from.</p>
+        </div>
+      </section>
+    </article>
+
+    <section class="section section--teal" aria-labelledby="cta-heading">
+      <div class="wrap wrap--content">
+        <h2 id="cta-heading">Let's Talk Quality</h2>
+        <p>If you're building a team, solving an interesting quality problem, or just want to talk about testing, I'd be glad to connect.</p>
+        <div class="button-row">
+          <a class="button button--reversed" href="https://www.linkedin.com/in/zenziali">Get in Touch on LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/zenziali">LinkedIn</a></li>
+        <li><a href="https://github.com/zeeatwork">GitHub</a></li>
+      </ul>
+      <p>&copy; 2026 Zenzi Ali</p>
+    </div>
+  </footer>
+</body>
+</html>
