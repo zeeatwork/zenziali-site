@@ -144,6 +144,7 @@ a {
 
 /* Header and nav */
 .site-header {
+  background: var(--warm-ivory);
   border-bottom: 1px solid rgba(32, 38, 40, 0.12);
 }
 
@@ -153,29 +154,66 @@ a {
   align-items: center;
   justify-content: flex-end;
   gap: var(--space-40);
-  padding-top: var(--space-50);
-  padding-bottom: var(--space-50);
+  padding-top: var(--space-60);
+  padding-bottom: var(--space-60);
 }
 
 .site-nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-30) var(--space-50);
+  align-items: center;
+  gap: var(--space-40) var(--space-60);
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.site-nav a {
-  color: var(--ink);
-  text-decoration: none;
-  font-size: var(--small);
+.site-nav li {
+  margin: 0;
 }
 
-.site-nav a:hover,
+.site-nav a {
+  display: inline-block;
+  padding: var(--space-30) 0;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: var(--body);
+  font-weight: 700;
+  border-bottom: 3px solid transparent;
+}
+
+.site-nav a:hover {
+  color: var(--deep-teal);
+  border-bottom-color: var(--deep-teal);
+}
+
 .site-nav a[aria-current="page"] {
   color: var(--deep-teal);
-  text-decoration: underline;
+  border-bottom-color: var(--deep-teal);
+}
+
+/* LinkedIn as an outlined button so the main call to action stands out */
+.site-nav li:last-child a {
+  padding: var(--space-30) var(--space-50);
+  border: 2px solid var(--deep-teal);
+  color: var(--deep-teal);
+}
+
+.site-nav li:last-child a:hover {
+  background: var(--deep-teal);
+  color: var(--warm-ivory);
+}
+
+@media (max-width: 640px) {
+  .site-header .wrap {
+    justify-content: flex-start;
+    padding-top: var(--space-50);
+    padding-bottom: var(--space-50);
+  }
+
+  .site-nav ul {
+    gap: var(--space-30) var(--space-50);
+  }
 }
 
 /* Eyebrow */
