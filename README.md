@@ -8,6 +8,7 @@ Source for Zenzi Ali's portfolio site, hosted on GitHub Pages.
 - `about.html`: About
 - `case-studies.html`: Case Studies list
 - `quality-is-glue-work.html`: Case study, Quality Is Glue Work
+- `images/zenzi-ali.jpg`: About page portrait (620x775, about 40 KB)
 - `styles.css`: shared styles and design tokens (colors, type scale, spacing)
 
 Plain HTML and CSS. No build step, no dependencies. The font is Manrope (open source, SIL Open Font License), loaded from Google Fonts.
