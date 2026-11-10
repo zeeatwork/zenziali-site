@@ -425,3 +425,7 @@ li {
   color: #5c6466;
   font-style: italic;
 }
+
+.mock td:first-child {
+  white-space: nowrap;
+}
