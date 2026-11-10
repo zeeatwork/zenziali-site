@@ -20,7 +20,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="case-studies.html" aria-current="true">Case Studies</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="https://www.linkedin.com/in/zenziali">Connect on LinkedIn</a></li>
+          <li><a href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Connect on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
         </ul>
       </nav>
     </div>
@@ -45,6 +45,19 @@
           <p>As the developers demoed features, conversations started that should have happened months earlier. The code worked. It just didn't match the client's needs or the way they actually worked, and often the fix wasn't small. Sometimes ten hours of client time had gone into a feature that had nothing to do with the client's goals.</p>
           <p>After each miss, the developer noted what went wrong and the implementation team went back to the client with more questions. Gaps stayed anyway. Questions moved like a game of telephone, from developer to product to implementation to client, and every round cost time.</p>
           <p>I kept watching for a few weeks. When my manager acknowledged the project would be delayed again, I mapped it out literally: every step from a client conversation to a finished feature, and every hand and department it passed through before the client could review it. I also went through our CRM and found excellent notes going back more than a year. The deal itself had been in progress for about three years.</p>
+          <!-- DRAFT MOCK 1: process map. Steps are taken from the story text; confirm or correct against the real map. -->
+          <figure class="mock" aria-labelledby="mock1-cap">
+            <span class="mock-label">Simplified recreation</span>
+            <ol class="handoff">
+              <li>Client conversation</li>
+              <li>Implementation</li>
+              <li>Product</li>
+              <li>Developer</li>
+              <li>Demo for client review</li>
+            </ol>
+            <p class="handoff-loop">↺ Each miss in a demo sent new questions back down the same chain.</p>
+            <figcaption id="mock1-cap">A simplified version of my map: every hand a request passed through before the client saw it.</figcaption>
+          </figure>
           <p>I wasn't on the project. But it mattered for revenue, the people were fantastic, and as the company's entire QA team, I wanted it to go well.</p>
         </div>
       </section>
@@ -70,10 +83,58 @@
           </ul>
           <p>Later stages covered what and how to test, and working with engineering on permanent test personas that other users couldn't easily edit.</p>
           <p>In my next one-on-one, I showed my manager the map and the plan, but I focused on the change I thought would have the most impact: adding example mapping to the overdue project. I'd built an example mapping template for our team, and I was excited to share it.</p>
+          <!-- DRAFT MOCK 2: example mapping. Fictional sample data (membership CRM), not from the real project. -->
+          <figure class="mock" aria-labelledby="mock2-cap">
+            <span class="mock-label">Mock example · Sample data</span>
+            <div class="example-map">
+              <div class="em-story"><p><strong>Story:</strong> As a membership coordinator, I can renew a member's annual dues in the CRM.</p></div>
+              <div class="em-rule"><p><strong>Rule:</strong> Renewal opens 60 days before the membership expires.</p></div>
+              <div class="em-rule"><p><strong>Rule:</strong> Members lapsed more than 90 days rejoin as new members.</p></div>
+              <div class="em-example"><p><strong>Example:</strong> Sample Member A expires Mar 31 and renews Feb 1. Renewal is allowed.</p></div>
+              <div class="em-example"><p><strong>Example:</strong> Sample Member B lapsed 120 days ago. They go to the new-member form.</p></div>
+              <div class="em-question"><p><strong>Question:</strong> Do lifetime members ever see a renewal notice?</p></div>
+            </div>
+            <figcaption id="mock2-cap">Example mapping layout: one story, its rules, concrete examples, and open questions for the client. Fictional data for a sample membership CRM.</figcaption>
+          </figure>
           <p>He was enthusiastic and agreed with my read of the pain points. His challenge was buy-in. Product was three people, and every change needed time from implementation, engineering, and customer support. The overdue project was at a critical point, and everyone's time was already committed to it.</p>
           <p>So I pivoted. Once I realized the plan wouldn't start in Q1 or Q2, I looked for work I could do alone that would support the project now and prepare the team for when it was over. Choosing test management software was already on my list, and once I had it, I wanted to put it to use.</p>
           <p>There was no formal test plan when I arrived, and past Jira tickets couldn't be the source of truth. They were often written before a feature was shaped, and decisions happened in conversations that never made it back to the ticket. So I went back to what the company was actually accountable for: the original contract and its addendums. My manager had already decided to hold firm on deliveries (nothing added, only what was planned), which made the contract the right baseline.</p>
           <p>I used ChatGPT to create test scripts from the contract and addendums. To check its work, I added a column asking for the source of each test and where it could be traced, down to the section and page (the automation section on page 33 of the original contract, for example). That let me confirm my initial tests traced exactly to the sections and addendum they should have. I also built a traceability matrix, because I wanted the test plan and the eventual test runs to trace in both directions.</p>
+          <!-- DRAFT MOCK 3: AI-drafted tests with a source column. Fictional sample data; only "Automation, p. 33" echoes the story. -->
+          <figure class="mock" aria-labelledby="mock3-cap">
+            <span class="mock-label">Mock example · Sample data</span>
+            <div class="mock-table-wrap">
+              <table>
+                <thead>
+                  <tr><th scope="col">ID</th><th scope="col">Test</th><th scope="col">Source</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>TC-101</td><td>Renewal reminder emails send automatically 60, 30, and 7 days before expiry.</td><td>Sample contract, Automation, p. 33</td></tr>
+                  <tr><td>TC-102</td><td>Event registration applies member pricing to active members only.</td><td>Sample contract, Events, p. 18</td></tr>
+                  <tr><td>TC-103</td><td>Member import maps name, member ID, and join date with no lost records.</td><td>Sample Addendum A, Data migration, p. 4</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption id="mock3-cap">The extra column: every AI-drafted test names where it came from, so I could check it against the original. Fictional data for a sample membership CRM.</figcaption>
+          </figure>
+
+          <!-- DRAFT MOCK 4: traceability in both directions. Fictional sample data. -->
+          <figure class="mock" aria-labelledby="mock4-cap">
+            <span class="mock-label">Mock example · Sample data</span>
+            <div class="mock-table-wrap">
+              <table>
+                <thead>
+                  <tr><th scope="col">Requirement (source)</th><th scope="col">Tests in plan</th><th scope="col">Test run 1</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>REQ-01 Automated renewal reminders (Sample contract, p. 33)</td><td>TC-101, TC-104</td><td>Pass, Pass</td></tr>
+                  <tr><td>REQ-02 Member event pricing (Sample contract, p. 18)</td><td>TC-102</td><td>Fail (lapsed member got member price)</td></tr>
+                  <tr><td>REQ-03 Member data import (Sample Addendum A, p. 4)</td><td>TC-103, TC-105</td><td>Pass, Not run</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption id="mock4-cap">A traceability matrix: from any requirement you can find its tests, and from any test run you can find the requirement. Fictional data for a sample membership CRM.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -111,7 +172,7 @@
         <h2 id="cta-heading">Let's Talk Quality</h2>
         <p>If you're building a team, solving an interesting quality problem, or just want to talk about testing, I'd be glad to connect.</p>
         <div class="button-row">
-          <a class="button button--reversed" href="https://www.linkedin.com/in/zenziali">Get in Touch on LinkedIn</a>
+          <a class="button button--reversed" href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Get in Touch on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
         </div>
       </div>
     </section>
@@ -120,8 +181,8 @@
   <footer class="site-footer">
     <div class="wrap">
       <ul>
-        <li><a href="https://www.linkedin.com/in/zenziali">LinkedIn</a></li>
-        <li><a href="https://github.com/zeeatwork">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/zeeatwork" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
       </ul>
       <p>&copy; 2026 Zenzi Ali</p>
     </div>
