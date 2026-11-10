@@ -307,3 +307,121 @@ li {
 .card h2 a:hover {
   color: var(--deep-teal);
 }
+
+/* Screen-reader-only text (e.g. "opens in a new tab") */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Case study mocks (DRAFT) */
+.mock {
+  margin: var(--space-60) 0;
+  padding: var(--space-50);
+  background: var(--white);
+  border: 1px solid rgba(32, 38, 40, 0.12);
+  border-radius: var(--radius-card);
+  font-size: var(--small);
+}
+
+.mock figcaption {
+  margin-top: var(--space-40);
+  color: var(--ink);
+  font-size: var(--small);
+}
+
+.mock-label {
+  display: inline-block;
+  margin-bottom: var(--space-40);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--deep-teal);
+}
+
+/* Handoff chain */
+.handoff {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-30) var(--space-60);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.handoff li {
+  position: relative;
+  margin: 0;
+  padding: var(--space-30) var(--space-40);
+  border: 2px solid var(--deep-teal);
+  border-radius: var(--radius-card);
+  background: var(--warm-ivory);
+}
+
+.handoff li + li::before {
+  content: "→";
+  position: absolute;
+  left: calc(-1 * var(--space-50));
+  color: var(--deep-teal);
+}
+
+.handoff-loop {
+  margin: var(--space-40) 0 0;
+  color: var(--focus);
+}
+
+/* Example mapping */
+.example-map {
+  display: grid;
+  gap: var(--space-30);
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+}
+
+.example-map > div {
+  padding: var(--space-30) var(--space-40);
+  border-radius: 4px;
+}
+
+.example-map p {
+  margin: 0;
+}
+
+.em-story { background: #fbeeb8; grid-column: 1 / -1; }
+.em-rule { background: #d6e6f5; }
+.em-example { background: #d8efd9; }
+.em-question { background: #f6d6d0; }
+
+/* Mock tables */
+.mock-table-wrap {
+  overflow-x: auto;
+}
+
+.mock table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mock th,
+.mock td {
+  text-align: left;
+  padding: var(--space-30);
+  border-bottom: 1px solid rgba(32, 38, 40, 0.15);
+  vertical-align: top;
+}
+
+.mock th {
+  background: var(--warm-gray);
+}
+
+.mock .placeholder {
+  color: #5c6466;
+  font-style: italic;
+}
