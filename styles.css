@@ -467,3 +467,42 @@ li {
 .mock td:first-child {
   white-space: nowrap;
 }
+
+/* About page intro with portrait */
+.about-hero {
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-70);
+  align-items: start;
+}
+
+.about-hero .portrait {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+}
+
+.about-intro {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+@media (max-width: 800px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-50);
+  }
+
+  .about-hero .portrait,
+  .about-intro {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .about-hero .portrait {
+    max-width: 220px;
+  }
+}
