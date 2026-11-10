@@ -151,23 +151,16 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: var(--space-40);
   padding-top: var(--space-50);
   padding-bottom: var(--space-50);
 }
 
-.site-name {
-  font-size: var(--body);
-  font-weight: 700;
-  color: var(--ink);
-  text-decoration: none;
-}
-
 .site-nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-50);
+  gap: var(--space-30) var(--space-50);
   list-style: none;
   margin: 0;
   padding: 0;
