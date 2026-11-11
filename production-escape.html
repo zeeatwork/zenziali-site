@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning From a Production Escape | Zenzi Ali</title>
+  <meta name="description" content="A drawing bug shipped after it was flagged. How Zenzi Ali traced it to one thread holding two issues, tested every role, and gave each release a short checklist with an owner on every line.">
+  <link rel="canonical" href="https://zenziali.com/production-escape.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Zenzi Ali">
+  <meta property="og:title" content="Learning From a Production Escape | Zenzi Ali">
+  <meta property="og:description" content="A drawing bug shipped after it was flagged. How Zenzi Ali traced it to one thread holding two issues, tested every role, and gave each release a short checklist with an owner on every line.">
+  <meta property="og:url" content="https://zenziali.com/production-escape.html">
+  <meta property="og:image" content="https://zenziali.com/images/og/production-escape.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Learning From a Production Escape, a case study by Zenzi Ali">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="case-studies.html" aria-current="true">Case Studies</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Connect on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="hero">
+        <div class="wrap wrap--content">
+          <p class="eyebrow">Case Study</p>
+          <h1>Learning From a Production Escape</h1>
+          <p>The day after an evening release, our client forwarded a complaint from an educator. Drawings weren't saving. Educators were losing their work, and their students were opening worksheets with part of the picture missing.</p>
+          <p>I'd flagged a problem with the drawings the day before. I'd posted it in two places. It shipped anyway.</p>
+          <p>This is how a bug got past the tester who found it, and what our team changed so it wouldn't happen that way again.</p>
+        </div>
+      </header>
+
+      <section class="section section--article" aria-labelledby="scene-heading">
+        <div class="wrap wrap--content">
+          <h2 id="scene-heading">Release day</h2>
+          <p>Release days on our team were busy. Features were still coming in throughout the day, and regression testing ran at the same time. After our client's business day ended, the developer in charge of the release pushed it to production.</p>
+          <p>When I found an issue, I posted it in two places: a comment on the merge request in GitLab, and a message in the project's Slack channel tagging the developer in charge of the release. GitLab sent an alert for every new comment, and most of us had learned to tune those alerts out. If you wanted someone to look at something fast, you commented, and then you reached out in Slack.</p>
+          <p>Some decisions happened in GitLab and some happened in Slack. When we decided something in Slack, I copied it into the GitLab thread and resolved the thread there. That day, one thread held two issues. I asked whether the fix needed retesting. As I remember it, the answer was no, but it was about the other bug, not the drawings. I resolved the thread and moved on to the next issue.</p>
+          <figure class="mock" aria-labelledby="timeline-cap">
+            <span class="mock-label">Timeline</span>
+            <div class="flow">
+              <ol class="flow-steps">
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">1</span><span class="flow-text">Release day: testing while features still land</span></li>
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">2</span><span class="flow-text">Drawing issue flagged in GitLab and Slack</span></li>
+                <li class="flow-step flow-step--client"><span class="flow-num" aria-hidden="true">3</span><span class="flow-text">Evening: the release goes out</span></li>
+                <li class="flow-step flow-step--client"><span class="flow-num" aria-hidden="true">4</span><span class="flow-text">Next day: the client reports the bug</span></li>
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">5</span><span class="flow-text">Same day: the fix ships</span></li>
+              </ol>
+            </div>
+            <figcaption id="timeline-cap">From flag to fix in about a day. Filled circles mark the time the bug was live for educators.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="believe-heading">
+        <div class="wrap wrap--content">
+          <h2 id="believe-heading">What I believe</h2>
+          <p>A resolved thread should mean one decision about one issue. Once a thread holds two, resolving it can close something nobody actually decided.</p>
+          <p>A fix is also only as complete as the roles it's tested with. In this product, admins, educators, and students each reached the same worksheet a different way. A bug that hides from one role can sit in plain sight for another.</p>
+          <p>I don't think this failure belonged to one person, including me. Google's <a href="https://sre.google/sre-book/postmortem-culture/">chapter on postmortem culture</a> describes a blameless review as one that looks for contributing causes without blaming any person or team. That's how I wanted to look at this one.</p>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="did-heading">
+        <div class="wrap wrap--content">
+          <h2 id="did-heading">What I did</h2>
+          <p>Our client lead asked me to investigate. I reproduced the bug in our development environment, the closest thing we had to production. It needed two account types, so I logged in as an educator and as an admin in separate incognito windows to keep their sessions and caches apart. The drawings stayed for the admin. They disappeared for the educator, on the educator's own sheets and on copies of admin sheets.</p>
+          <p>The fix shipped the same day the client reported it. I verified it as an educator and as an admin, and checked the student link by eye, since students only view the sheet and have nothing to save.</p>
+          <figure class="mock" aria-labelledby="roles-cap">
+            <span class="mock-label">Simplified recreation</span>
+            <p class="roles-center">One worksheet</p>
+            <ul class="roles">
+              <li class="role-card">
+                <p class="role-name">Admin</p>
+                <p><strong>Gets there by:</strong> creating the worksheet</p>
+                <p><strong>Check:</strong> draw, save, and reopen. The drawing is still there.</p>
+              </li>
+              <li class="role-card role-card--hit">
+                <p class="role-name">Educator <span class="role-flag">Where it broke</span></p>
+                <p><strong>Gets there by:</strong> creating their own sheet, or saving a copy of an admin sheet</p>
+                <p><strong>Check:</strong> draw on both kinds of sheet, save, and reopen.</p>
+              </li>
+              <li class="role-card">
+                <p class="role-name">Student</p>
+                <p><strong>Gets there by:</strong> opening the educator's link</p>
+                <p><strong>Check:</strong> open the link. The whole picture shows, drawings included.</p>
+              </li>
+            </ul>
+            <figcaption id="roles-cap">The three roles in this story: one worksheet, three ways in, and a check for each.</figcaption>
+          </figure>
+          <p>Then I led a root cause analysis. The ticket for the original work described only one persona, and my flag about the drawings had been closed along with a different bug in a shared thread.</p>
+          <figure class="mock" aria-labelledby="thread-cap">
+            <span class="mock-label">Simplified recreation · Sample text</span>
+            <div class="threads">
+              <div class="thread-panel">
+                <h3 class="thread-heading">That day: one thread, two issues</h3>
+                <div class="thread">
+                  <p class="thread-msg"><span class="thread-tag thread-tag--a">Issue A</span> A different bug in the release</p>
+                  <p class="thread-msg"><span class="thread-tag thread-tag--b">Issue B</span> Drawings aren't saving for educators</p>
+                  <p class="thread-msg thread-msg--q">Question: does the fix need retesting?</p>
+                  <p class="thread-msg thread-msg--reply">Reply: no retest needed <span class="thread-note">(meant for Issue A)</span></p>
+                  <p class="thread-status thread-status--done"><span aria-hidden="true">&#10003;</span> Thread resolved. Closes A <strong>and</strong> B.</p>
+                </div>
+              </div>
+              <div class="thread-panel">
+                <h3 class="thread-heading">After: one issue, one thread</h3>
+                <div class="thread">
+                  <p class="thread-msg"><span class="thread-tag thread-tag--a">Issue A</span> A different bug in the release</p>
+                  <p class="thread-status thread-status--done"><span aria-hidden="true">&#10003;</span> Resolved</p>
+                </div>
+                <div class="thread">
+                  <p class="thread-msg"><span class="thread-tag thread-tag--b">Issue B</span> Drawings aren't saving for educators</p>
+                  <p class="thread-status thread-status--open"><span aria-hidden="true">&#9679;</span> Open until it's retested</p>
+                </div>
+              </div>
+            </div>
+            <figcaption id="thread-cap">As I remember it, one reply answered one issue, and resolving the thread closed both. After the root cause analysis, every issue got its own thread, and nothing was approved until every thread was resolved.</figcaption>
+          </figure>
+          <p>I ran it as a discussion, not a lecture. My slides had screenshots of our process, what went wrong, and how one thread had mixed two issues together, plus a proposal for checking releases after they went out. We used the slides to talk it through as a team. I also wrote up minutes for our client relationship manager, who couldn't attend, and for anyone who wanted to look back at what we decided.</p>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="changed-heading">
+        <div class="wrap wrap--content">
+          <h2 id="changed-heading">What it changed, and what I'd refine now</h2>
+          <p>We agreed on one issue per thread. If a decision happened in Slack, it went back into that issue's thread, and a merge request couldn't be approved until every thread was resolved. That was a team agreement, kept by habit.</p>
+          <p>We also started post-release verification. Each product got its own short list, because a learning app and a Drupal site don't break the same way. A few items were the same everywhere, like reviewing logs and analytics. For the learning apps, we used analytics to confirm that saves were succeeding, which is exactly what broke here. For other products, most of the list was visual regression: run it, then update the approved screenshots to the new version.</p>
+          <p>Every item had a name next to it. The developer in charge of the release checked most of them, and DevOps reviewed the logs and analytics. I kept each person's part to 10 minutes or less. Lisa Crispin and Janet Gregory call this a <a href="https://lisacrispin.com/2009/01/30/the-whole-team-approach/">whole-team approach</a>: quality belongs to everyone who delivers the work, not only to the tester.</p>
+          <figure class="mock" aria-labelledby="verify-cap">
+            <span class="mock-label">Mock example · Sample items</span>
+            <p class="checklist-title">Post-release check: sample learning app</p>
+            <ul class="checklist">
+              <li><span class="check-box" aria-hidden="true"></span><span class="check-item">Review the error logs from the release</span><span class="check-owner">DevOps</span></li>
+              <li><span class="check-box" aria-hidden="true"></span><span class="check-item">Confirm in analytics that saves are succeeding</span><span class="check-owner">DevOps</span></li>
+              <li><span class="check-box" aria-hidden="true"></span><span class="check-item">Run visual regression and update the approved screenshots</span><span class="check-owner">Release developer</span></li>
+              <li><span class="check-box" aria-hidden="true"></span><span class="check-item">Run the checks specific to this release</span><span class="check-owner">Release developer</span></li>
+            </ul>
+            <p class="checklist-foot">Each owner's part: 10 minutes or less.</p>
+            <figcaption id="verify-cap">A sample post-release list for one product. Each product had its own list, and every line had an owner.</figcaption>
+          </figure>
+          <p>Nothing dramatic changed afterward, and that was the point. I felt more secure about releases going out late at night, and confident that everything would be working in the morning.</p>
+          <p>What I'd refine: our six-week plans were usually optimistic, so the test cycle at the end was often shorter than it should have been. I pushed on that, and I never fully changed it. Shape Up, the process we used, already has the answer I'd lean on harder now. When time is fixed, you cut scope, not checks. The book says variable scope "is not about sacrificing quality" (<a href="https://basecamp.com/shapeup/3.5-chapter-14">Shape Up, chapter 14</a>).</p>
+          <p>I'd also make the thread rule a setting instead of a habit. GitLab can <a href="https://docs.gitlab.com/ee/user/project/merge_requests/auto_merge.html">block a merge until all threads are resolved</a>, and GitHub has a similar option.</p>
+        </div>
+      </section>
+
+      <section class="section section--gray" aria-labelledby="takeaways-heading">
+        <div class="wrap wrap--content">
+          <h2 id="takeaways-heading">Take it with you</h2>
+          <ul class="takeaways">
+            <li><strong>Make every role a row.</strong> Before you test a fix, list each role that can reach the feature and what each one can do. Security testers already work this way: the <a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/02-Testing_for_Bypassing_Authorization_Schema">OWASP testing guide</a> checks access role by role. The same habit catches plain functional bugs, too. Ask the question early, in a <a href="https://www.stickyminds.com/sites/default/files/magazine/file/2013/3971888.pdf">Three Amigos</a> conversation between product, development, and testing.</li>
+            <li><strong>One issue, one thread.</strong> Don't let a single thread hold two decisions, and don't merge until every thread is resolved. If your team keeps that rule by habit, a GitLab or GitHub setting can keep it for you.</li>
+            <li><strong>Keep the release checklist short, with a name on every line.</strong> Atul Gawande's <cite>The Checklist Manifesto</cite> makes the case for short lists focused on the steps people actually miss. Ours took each owner 10 minutes or less.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="forward-heading">
+        <div class="wrap wrap--content">
+          <h2 id="forward-heading">Looking forward</h2>
+          <p>None of these habits are fancy: one home for each issue, a check for every role, and a short list after every release. Research from <a href="https://dora.dev/guides/dora-metrics/">DORA</a> has found that speed and stability aren't a tradeoff, and small habits like these are part of how a team gets both.</p>
+          <p>I still use them. My own site runs visual regression against approved screenshots, the same technique from our post-release lists. I wrote about that in <a href="testing-my-own-portfolio.html">Testing My Own Portfolio</a>.</p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="sources-heading">
+        <div class="wrap wrap--content">
+          <h2 id="sources-heading">Sources</h2>
+          <ul class="sources">
+            <li>Beyer, B., Jones, C., Petoff, J., and Murphy, N. R. (eds.), <cite>Site Reliability Engineering</cite>, chapter 15, "<a href="https://sre.google/sre-book/postmortem-culture/">Postmortem Culture: Learning from Failure</a>." O'Reilly, 2016.</li>
+            <li>Crispin, L., "<a href="https://lisacrispin.com/2009/01/30/the-whole-team-approach/">The Whole Team Approach</a>," 2009. See also Crispin, L., and Gregory, J., <cite>Agile Testing</cite>. Addison-Wesley, 2009.</li>
+            <li>Dinwiddie, G., "<a href="https://www.stickyminds.com/sites/default/files/magazine/file/2013/3971888.pdf">The Three Amigos</a>," <cite>Better Software</cite>, 2013.</li>
+            <li>DORA, "<a href="https://dora.dev/guides/dora-metrics/">DORA&#39;s software delivery performance metrics</a>."</li>
+            <li>Gawande, A., <cite>The Checklist Manifesto: How to Get Things Right</cite>. Metropolitan Books, 2009.</li>
+            <li>GitLab Docs, "<a href="https://docs.gitlab.com/ee/user/project/merge_requests/auto_merge.html">Auto-merge</a>" (merge checks, including resolved threads).</li>
+            <li>OWASP, <cite>Web Security Testing Guide</cite>, "<a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/02-Testing_for_Bypassing_Authorization_Schema">Testing for Bypassing Authorization Schema</a>" (WSTG-ATHZ-02).</li>
+            <li>Singer, R., <cite>Shape Up</cite>, chapter 14, "<a href="https://basecamp.com/shapeup/3.5-chapter-14">Decide When to Stop</a>." Basecamp, 2019.</li>
+          </ul>
+        </div>
+      </section>
+
+    </article>
+
+    <section class="section section--teal" aria-labelledby="cta-heading">
+      <div class="wrap wrap--content">
+        <h2 id="cta-heading">Let's Talk Quality</h2>
+        <p>If you're building a team, solving an interesting quality problem, or just want to talk about testing, I'd be glad to connect.</p>
+        <div class="button-row">
+          <a class="button button--reversed" href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Get in Touch on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/zeeatwork" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+      <p>&copy; 2026 Zenzi Ali</p>
+    </div>
+  </footer>
+</body>
+</html>
