@@ -1,0 +1,33 @@
+name: Update screenshots
+
+# Run by hand (Actions tab > Update screenshots > Run workflow) after an
+# intended design change. It retakes the approved screenshots for
+# tests/visual.spec.js in the same browser CI uses and commits them.
+# Look at the new images in the commit before trusting them.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test tests/visual.spec.js --update-snapshots
+      - name: Commit new screenshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/visual.spec.js-snapshots
+          git diff --cached --quiet && echo "No screenshot changes" && exit 0
+          git commit -m "Update approved screenshots from CI"
+          git push
