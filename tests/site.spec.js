@@ -12,6 +12,7 @@ const pages = [
   { path: '/ai-job-search.html', name: 'AI Job Search' },
   { path: '/production-escape.html', name: 'Production Escape' },
   { path: '/projects.html', name: 'Projects' },
+  { path: '/talks.html', name: 'Talks' },
   { path: '/testing-my-own-portfolio.html', name: 'Testing My Own Portfolio' },
 ];
 
