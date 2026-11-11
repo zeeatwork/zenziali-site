@@ -609,3 +609,97 @@ li {
     max-width: 220px;
   }
 }
+
+/* Model comparison cards (paper page) */
+.models {
+  display: grid;
+  gap: var(--space-40);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.model {
+  padding: var(--space-40);
+  border: 1px solid rgba(32, 38, 40, 0.15);
+  border-radius: var(--radius-card);
+  background: var(--warm-ivory);
+}
+
+.model-name {
+  margin: 0 0 var(--space-30);
+  font-weight: 700;
+  font-size: var(--body);
+}
+
+.model-ex {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #4a5355;
+}
+
+.model dl {
+  margin: 0;
+}
+
+.model dt {
+  margin-top: var(--space-30);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--deep-teal);
+}
+
+.model dd {
+  margin: 0;
+}
+
+.model--focus {
+  border: 2px solid var(--deep-teal);
+  background: #e3efed;
+}
+
+.model--focus .model-name {
+  margin: calc(-1 * var(--space-40)) calc(-1 * var(--space-40)) var(--space-30);
+  padding: var(--space-30) var(--space-40);
+  background: var(--deep-teal);
+  color: var(--warm-ivory);
+  border-radius: 6px 6px 0 0;
+}
+
+.model--focus .model-ex {
+  color: var(--warm-ivory);
+}
+
+/* Pull quote */
+.pull-quote {
+  margin: var(--space-70) 0;
+  padding: 0 0 0 var(--space-50);
+  border-left: 6px solid var(--deep-teal);
+}
+
+.pull-quote blockquote {
+  margin: 0;
+}
+
+.pull-quote blockquote p {
+  margin: 0 0 var(--space-40);
+  font-size: var(--h3);
+  line-height: 1.25;
+  color: var(--deep-teal);
+}
+
+.pull-quote figcaption {
+  font-size: var(--small);
+}
+
+/* Habit icons (Home) */
+.habit-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-40);
+  fill: none;
+  stroke: var(--deep-teal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

@@ -8,6 +8,7 @@ const pages = [
   { path: '/about.html', name: 'About' },
   { path: '/case-studies.html', name: 'Case Studies' },
   { path: '/quality-is-glue-work.html', name: 'Quality Is Glue Work' },
+  { path: '/nimble-not-agile.html', name: 'Nimble, not Agile' },
 ];
 
 for (const { path, name } of pages) {
@@ -119,5 +120,21 @@ for (const { path, name } of pages) {
         expect(l.name, `new-tab warning on ${l.href}`).toMatch(/new tab|new window/);
       }
     });
+  });
+}
+
+// Share previews (LinkedIn and others read Open Graph tags).
+for (const { path, name } of pages) {
+  test(`${name} has a share image and Open Graph tags`, async ({ page, request }, testInfo) => {
+    test.skip(testInfo.project.name === 'phone', 'Same tags on every viewport');
+    await page.goto(path);
+    for (const prop of ['og:title', 'og:description', 'og:url', 'og:image', 'og:image:alt']) {
+      await expect(page.locator(`meta[property="${prop}"]`), prop).toHaveAttribute('content', /\S/);
+    }
+    const img = await page.locator('meta[property="og:image"]').getAttribute('content');
+    expect(img, 'og:image must be an absolute https URL').toMatch(/^https:\/\/zenziali\.com\/images\/og\/.+\.png$/);
+    // Check the file exists in this build (the live URL may not be deployed yet).
+    const res = await request.get(new URL(img).pathname);
+    expect(res.status(), `missing share image ${img}`).toBe(200);
   });
 }

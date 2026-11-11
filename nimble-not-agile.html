@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nimble, not Agile | Zenzi Ali</title>
+  <meta name="description" content="Zenzi Ali's PNSQC 2023 paper on building a flexible QA framework for a team that uses Basecamp's Shape Up method instead of Scrum or Kanban.">
+  <link rel="canonical" href="https://zenziali.com/nimble-not-agile.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Zenzi Ali">
+  <meta property="og:title" content="Nimble, not Agile | Zenzi Ali">
+  <meta property="og:description" content="Zenzi Ali's PNSQC 2023 paper on building a flexible QA framework for a team that uses Basecamp's Shape Up method instead of Scrum or Kanban.">
+  <meta property="og:url" content="https://zenziali.com/nimble-not-agile.html">
+  <meta property="og:image" content="https://zenziali.com/images/og/nimble-not-agile.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Nimble, not Agile, a PNSQC 2023 paper by Zenzi Ali">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="case-studies.html" aria-current="true">Case Studies</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Connect on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="hero">
+        <div class="wrap wrap--content">
+          <p class="eyebrow">Conference Paper · PNSQC 2023</p>
+          <h1>Nimble, not Agile</h1>
+          <p class="lead">Creating a flexible quality assurance framework for your company's unique SDLC. My first attempt at putting my QA process into words for the public.</p>
+        </div>
+      </header>
+
+      <section class="section section--article" aria-labelledby="about-paper-heading">
+        <div class="wrap wrap--content">
+          <h2 id="about-paper-heading">Why I wrote it</h2>
+          <p>I think one of the hardest things a professional can do is distill their own process so someone else can repeat it.</p>
+          <p>I've often worked as the only full-time quality engineer. In a small company, that means a wide range of duties, from everyday manual QA to company process and strategy. There's a second challenge, too. The team might support the idea of QA but not feel the need to improve or iterate on their practices until a major defect shows up.</p>
+          <p>Small and solo QA teams need a process that works with the team they have, not the idealized, cookie-cutter engineering team that books and documentation use as their example. That's what inspired this paper. I wanted small teams, even ones without decision-making power, to be able to build processes that improve quality, whether buy-in is small or large.</p>
+          <p>When I wrote it, our testing team was a team of not quite two. The engineers built with Basecamp's Shape Up method: six-week cycles, no sprints, no backlogs, and very little room set aside for testing. Most testing lifecycle models are built to match Scrum or Kanban, so I didn't have a playbook to follow. I also didn't want to change a process my team was happy with. So I asked a different question: how could I add testing to the process we already had, without becoming a bottleneck?</p>
+          <!-- Adapted from Figure 2 of the paper (Comparison of SDLC Models), condensed. -->
+          <figure class="mock" aria-labelledby="sdlc-cap">
+            <span class="mock-label">From the paper · Condensed</span>
+            <div class="models">
+              <div class="model">
+                <p class="model-name">Sequential <span class="model-ex">Waterfall, V</span></p>
+                <dl>
+                  <dt>When testing happens</dt><dd>Static testing at the start, dynamic at the end</dd>
+                  <dt>Documentation</dt><dd>Heavy, and often the basis for testing</dd>
+                  <dt>Automation</dt><dd>Not practical before the full system exists</dd>
+                  <dt>Tester's role</dt><dd>Requirement reviews, test analysis and design</dd>
+                </dl>
+              </div>
+              <div class="model">
+                <p class="model-name">Incremental <span class="model-ex">Unified Process</span></p>
+                <dl>
+                  <dt>When testing happens</dt><dd>End of each increment</dd>
+                  <dt>Documentation</dt><dd>Light</dd>
+                  <dt>Automation</dt><dd>Preferred for regression</dd>
+                  <dt>Tester's role</dt><dd>Test each increment and give fast feedback</dd>
+                </dl>
+              </div>
+              <div class="model">
+                <p class="model-name">Iterative <span class="model-ex">Spiral, Prototyping</span></p>
+                <dl>
+                  <dt>When testing happens</dt><dd>End of each iteration</dd>
+                  <dt>Documentation</dt><dd>Requirements documented; features evolve</dd>
+                  <dt>Automation</dt><dd>Preferred for regression</dd>
+                  <dt>Tester's role</dt><dd>Exit criteria, test planning, execution</dd>
+                </dl>
+              </div>
+              <div class="model model--focus">
+                <p class="model-name">Shape Up <span class="model-ex">Basecamp</span></p>
+                <dl>
+                  <dt>When testing happens</dt><dd>Inside the six-week cycle</dd>
+                  <dt>Documentation</dt><dd>Light; no backlog, so little is written down</dd>
+                  <dt>Automation</dt><dd>Not expected</dd>
+                  <dt>Tester's role</dt><dd>Edge cases only; designers and developers own quality</dd>
+                </dl>
+              </div>
+            </div>
+            <figcaption id="sdlc-cap">Where testing fits in common development models. Each one comes with a testing lifecycle to match. Shape Up left the tester at the edges, so I built my own.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="inside-heading">
+        <div class="wrap wrap--content">
+          <h2 id="inside-heading">What's inside</h2>
+          <ul>
+            <li>A time-boxed SWOT analysis of how my team built and tested software.</li>
+            <li>Small process changes, each matched to something the SWOT turned up. They included moving test cases into test management software, taking testing discussions out of Slack, and running ensemble testing sessions with developers.</li>
+            <li>A map of test activities to each phase of our development cycle.</li>
+            <li>Two common team scenarios, The Lone Tester and Team Just Ship It, with a starting framework for each.</li>
+          </ul>
+          <figure class="pull-quote">
+            <blockquote>
+              <p>The best framework for creating quality is the one that you use repeatedly and consistently!</p>
+            </blockquote>
+            <figcaption>From <cite>Nimble, not Agile</cite></figcaption>
+          </figure>
+          <p>That idea still guides how I work. I picked up the same thread at my next role, in <a href="quality-is-glue-work.html">Quality Is Glue Work</a>.</p>
+          <div class="button-row">
+            <a class="button button--secondary" href="https://pnsqc.org/archive/proceedings/" target="_blank" rel="noopener noreferrer">Read it in the PNSQC Proceedings<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <section class="section section--teal" aria-labelledby="cta-heading">
+      <div class="wrap wrap--content">
+        <h2 id="cta-heading">Let's Talk Quality</h2>
+        <p>If you're building a team, solving an interesting quality problem, or just want to talk about testing, I'd be glad to connect.</p>
+        <div class="button-row">
+          <a class="button button--reversed" href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Get in Touch on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/zeeatwork" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+      <p>&copy; 2026 Zenzi Ali</p>
+    </div>
+  </footer>
+</body>
+</html>
