@@ -57,7 +57,7 @@
           <p>Release days on our team were busy. Features were still coming in throughout the day, and regression testing ran at the same time. After our client's business day ended, the developer in charge of the release pushed it to production.</p>
           <p>When I found an issue, I posted it in two places: a comment on the merge request in GitLab, and a message in the project's Slack channel tagging the developer in charge of the release. GitLab sent an alert for every new comment, and most of us had learned to tune those alerts out. If you wanted someone to look at something fast, you commented, and then you reached out in Slack.</p>
           <p>Some decisions happened in GitLab and some happened in Slack. When we decided something in Slack, I copied it into the GitLab thread and resolved the thread there. That day, one thread held two issues. I asked whether the fix needed retesting. As I remember it, the answer was no, but it was about the other bug, not the drawings. I resolved the thread and moved on to the next issue.</p>
-          <figure class="mock" aria-labelledby="timeline-cap">
+          <figure class="mock accent-teal" aria-labelledby="timeline-cap">
             <span class="mock-label">Timeline</span>
             <div class="flow">
               <ol class="flow-steps">
@@ -87,7 +87,7 @@
           <h2 id="did-heading">What I did</h2>
           <p>Our client lead asked me to investigate. I reproduced the bug in our development environment, the closest thing we had to production. It needed two account types, so I logged in as an educator and as an admin in separate incognito windows to keep their sessions and caches apart. The drawings stayed for the admin. They disappeared for the educator, on the educator's own sheets and on copies of admin sheets.</p>
           <p>The fix shipped the same day the client reported it. I verified it as an educator and as an admin, and checked the student link by eye, since students only view the sheet and have nothing to save.</p>
-          <figure class="mock" aria-labelledby="roles-cap">
+          <figure class="mock accent-clay" aria-labelledby="roles-cap">
             <span class="mock-label">Simplified recreation</span>
             <p class="roles-center">One worksheet</p>
             <ul class="roles">
@@ -110,7 +110,7 @@
             <figcaption id="roles-cap">The three roles in this story: one worksheet, three ways in, and a check for each.</figcaption>
           </figure>
           <p>Then I led a root cause analysis. The ticket for the original work described only one persona, and my flag about the drawings had been closed along with a different bug in a shared thread.</p>
-          <figure class="mock" aria-labelledby="thread-cap">
+          <figure class="mock accent-ochre" aria-labelledby="thread-cap">
             <span class="mock-label">Simplified recreation · Sample text</span>
             <div class="threads">
               <div class="thread-panel">
@@ -147,7 +147,7 @@
           <p>We agreed on one issue per thread. If a decision happened in Slack, it went back into that issue's thread, and a merge request couldn't be approved until every thread was resolved. That was a team agreement, kept by habit.</p>
           <p>We also started post-release verification. Each product got its own short list, because a learning app and a Drupal site don't break the same way. A few items were the same everywhere, like reviewing logs and analytics. For the learning apps, we used analytics to confirm that saves were succeeding, which is exactly what broke here. For other products, most of the list was visual regression: run it, then update the approved screenshots to the new version.</p>
           <p>Every item had a name next to it. The developer in charge of the release checked most of them, and DevOps reviewed the logs and analytics. I kept each person's part to 10 minutes or less. Lisa Crispin and Janet Gregory call this a <a href="https://lisacrispin.com/2009/01/30/the-whole-team-approach/">whole-team approach</a>: quality belongs to everyone who delivers the work, not only to the tester.</p>
-          <figure class="mock" aria-labelledby="verify-cap">
+          <figure class="mock accent-blue" aria-labelledby="verify-cap">
             <span class="mock-label">Mock example · Sample items</span>
             <p class="checklist-title">Post-release check: sample learning app</p>
             <ul class="checklist">
