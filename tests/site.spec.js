@@ -9,6 +9,8 @@ const pages = [
   { path: '/case-studies.html', name: 'Case Studies' },
   { path: '/quality-is-glue-work.html', name: 'Quality Is Glue Work' },
   { path: '/nimble-not-agile.html', name: 'Nimble, not Agile' },
+  { path: '/ai-job-search.html', name: 'AI Job Search' },
+  { path: '/production-escape.html', name: 'Production Escape' },
   { path: '/projects.html', name: 'Projects' },
   { path: '/testing-my-own-portfolio.html', name: 'Testing My Own Portfolio' },
 ];

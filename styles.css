@@ -784,3 +784,212 @@ li {
   font-style: italic;
   color: #4a5355;
 }
+
+/* Two- and three-column tables on project and case study pages */
+.mock .lessonmap td,
+.mock .scoremap td,
+.mock .rolemap td,
+.mock .verifymap td {
+  white-space: normal;
+}
+
+.lessonmap td:first-child {
+  width: 50%;
+}
+
+/* Sources list at the end of a case study */
+.sources li {
+  margin-bottom: var(--space-30);
+}
+
+/* Merge request thread: before and after (production escape) */
+.threads {
+  display: grid;
+  gap: var(--space-50);
+}
+
+.thread-heading {
+  margin: 0 0 var(--space-30);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.thread {
+  border: 1px solid rgba(32, 38, 40, 0.18);
+  border-left: 4px solid var(--deep-teal);
+  border-radius: var(--radius-card);
+  background: var(--warm-ivory);
+  padding: var(--space-30) var(--space-40);
+}
+
+.thread + .thread {
+  margin-top: var(--space-40);
+}
+
+.thread-msg,
+.thread-status {
+  margin: 0;
+  padding: var(--space-30) 0;
+  line-height: 1.35;
+}
+
+.thread-msg + .thread-msg,
+.thread-msg + .thread-status {
+  border-top: 1px solid rgba(32, 38, 40, 0.12);
+}
+
+.thread-msg--q,
+.thread-msg--reply {
+  padding-left: var(--space-40);
+}
+
+.thread-note {
+  font-style: italic;
+  color: #4a5355;
+}
+
+.thread-tag {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.thread-tag--a { background: #d6e6f5; color: #1d3f5e; }
+.thread-tag--b { background: #f4d9cf; color: #7a3622; }
+
+.thread-status {
+  font-weight: 700;
+}
+
+.thread-status--done { color: var(--deep-teal); }
+.thread-status--open { color: #9c4a33; }
+
+@media (min-width: 700px) {
+  .threads {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Role cards (production escape) */
+.roles-center {
+  margin: 0 0 var(--space-40);
+  padding: var(--space-30);
+  border: 2px solid var(--deep-teal);
+  border-radius: var(--radius-card);
+  text-align: center;
+  font-weight: 700;
+  color: var(--deep-teal);
+}
+
+.roles {
+  display: grid;
+  gap: var(--space-40);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.role-card {
+  margin: 0;
+  padding: var(--space-40);
+  border: 1px solid rgba(32, 38, 40, 0.18);
+  border-top: 6px solid var(--deep-teal);
+  border-radius: var(--radius-card);
+  background: var(--warm-ivory);
+}
+
+.role-card p {
+  margin: 0 0 var(--space-30);
+  line-height: 1.35;
+}
+
+.role-card p:last-child {
+  margin-bottom: 0;
+}
+
+.role-card--hit {
+  border-top-color: #9c4a33;
+}
+
+.role-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.role-flag {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: #f4d9cf;
+  color: #7a3622;
+  font-size: 0.75rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+@media (min-width: 700px) {
+  .roles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Post-release checklist (production escape) */
+.checklist-title {
+  margin: 0 0 var(--space-30);
+  font-weight: 700;
+}
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(32, 38, 40, 0.15);
+}
+
+.checklist li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem var(--space-40);
+  align-items: start;
+  padding: var(--space-30) 0;
+  border-bottom: 1px solid rgba(32, 38, 40, 0.15);
+}
+
+.check-box {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15rem;
+  border: 2px solid var(--deep-teal);
+  border-radius: 3px;
+}
+
+.check-owner {
+  grid-column: 2;
+  justify-self: start;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: #d9ebe6;
+  color: var(--deep-teal);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.checklist-foot {
+  margin: var(--space-30) 0 0;
+  font-style: italic;
+}
+
+@media (min-width: 700px) {
+  .checklist li {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  .check-owner {
+    grid-column: 3;
+  }
+}
