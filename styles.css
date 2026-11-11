@@ -1211,3 +1211,98 @@ li {
 .talk-card p {
   margin: 0 0 var(--space-30);
 }
+
+/* Color accents (Nov 2026). One family per accent:
+   --accent: strips and borders (decorative)
+   --tint: light fills behind art and table headers
+   --stripe: alternate table rows
+   --label: text on white or tint (all 6:1 or better on white) */
+.accent-teal  { --accent: #075e5a; --tint: #d9ebe6; --stripe: #f1f7f5; --label: #075e5a; }
+.accent-clay  { --accent: #9c4a33; --tint: #f4d9cf; --stripe: #fbf1ec; --label: #7a3622; }
+.accent-ochre { --accent: #e3b04b; --tint: #f6e3b4; --stripe: #fdf7e6; --label: #6b4f12; }
+.accent-blue  { --accent: #2f6690; --tint: #d6e6f5; --stripe: #f0f5fb; --label: #1d3f5e; }
+
+/* Figures pick up their accent as a top strip and label color */
+.mock[class*="accent-"] {
+  border-top: 6px solid var(--accent);
+}
+
+.mock[class*="accent-"] .mock-label {
+  color: var(--label);
+  font-weight: 700;
+}
+
+/* Tables follow their figure's accent: tinted header, striped rows */
+.mock[class*="accent-"] th {
+  background: var(--tint);
+  color: var(--ink);
+  border-bottom: 2px solid var(--accent);
+}
+
+.mock[class*="accent-"] tbody tr:nth-child(even) td {
+  background: var(--stripe);
+}
+
+.mock[class*="accent-"] td:first-child {
+  color: var(--label);
+}
+
+/* Illustrated cards (Case Studies, Projects, Talks) */
+.card--art {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 20px;
+  border-bottom: 8px solid var(--accent);
+  box-shadow: 0 1px 2px rgba(32, 38, 40, 0.08), 0 8px 24px rgba(32, 38, 40, 0.06);
+}
+
+.card__art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  background: var(--tint);
+}
+
+.card__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: var(--warm-ivory);
+  border: 3px solid var(--label);
+}
+
+.card__icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  fill: none;
+  stroke: var(--label);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card__body {
+  padding: var(--space-50);
+}
+
+.card--art .eyebrow {
+  color: var(--label);
+  font-weight: 700;
+}
+
+.card--art h2 a:hover {
+  color: var(--label);
+}
+
+/* Small note under a button */
+.button-note {
+  margin-top: var(--space-40);
+  font-size: var(--small);
+}
