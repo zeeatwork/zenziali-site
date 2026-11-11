@@ -284,8 +284,76 @@ a {
   margin-top: var(--space-60);
 }
 
-.approach-list h3 {
-  margin-bottom: var(--space-40);
+/* Habit cards (Home, "How I Approach Quality") */
+.habit-card {
+  --habit-accent: var(--deep-teal);
+  --habit-tint: #d9ebe6;
+  --habit-label: var(--deep-teal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--white);
+  border-radius: 20px;
+  border-bottom: 8px solid var(--habit-accent);
+  box-shadow: 0 1px 2px rgba(32, 38, 40, 0.08), 0 8px 24px rgba(32, 38, 40, 0.06);
+}
+
+.habit-card--process {
+  --habit-accent: #9c4a33; /* Clay: 6.1:1 on white */
+  --habit-tint: #f4d9cf;
+  --habit-label: #9c4a33;
+}
+
+.habit-card--user {
+  --habit-accent: #e3b04b; /* Ochre: decorative strip only */
+  --habit-tint: #f6e3b4;
+  --habit-label: #7a5a14; /* Dark ochre: 6.4:1 on white */
+}
+
+.habit-card__art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 13.75rem;
+  background: var(--habit-tint);
+}
+
+.habit-card__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--warm-ivory);
+  border: 3px solid var(--habit-label);
+}
+
+.habit-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-30);
+  padding: var(--space-60) var(--space-60) var(--space-60);
+  font-size: 1.125rem;
+}
+
+.habit-card__body p {
+  margin: 0;
+}
+
+.habit-card__label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--habit-label);
+}
+
+.habit-card h3 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 /* Footer */
@@ -694,12 +762,11 @@ li {
 /* Habit icons (Home) */
 .habit-icon {
   display: block;
-  width: 48px;
-  height: 48px;
-  margin-bottom: var(--space-40);
+  width: 84px;
+  height: 84px;
   fill: none;
-  stroke: var(--deep-teal);
-  stroke-width: 2.5;
+  stroke: var(--habit-label, var(--deep-teal));
+  stroke-width: 2.25;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
