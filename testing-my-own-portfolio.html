@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testing My Own Portfolio | Zenzi Ali</title>
+  <meta name="description" content="With Claude, Zenzi Ali turned her portfolio's publish checklist into Playwright and axe tests that run on every push. Here's what the first run caught.">
+  <link rel="canonical" href="https://zenziali.com/testing-my-own-portfolio.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Zenzi Ali">
+  <meta property="og:title" content="Testing My Own Portfolio | Zenzi Ali">
+  <meta property="og:description" content="With Claude, Zenzi Ali turned her portfolio's publish checklist into Playwright and axe tests that run on every push. Here's what the first run caught.">
+  <meta property="og:url" content="https://zenziali.com/testing-my-own-portfolio.html">
+  <meta property="og:image" content="https://zenziali.com/images/og/testing-my-own-portfolio.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Testing My Own Portfolio, a project by Zenzi Ali">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="projects.html" aria-current="true">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Connect on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="hero">
+        <div class="wrap wrap--content">
+          <p class="eyebrow">Project · Test Automation · Accessibility</p>
+          <h1>Testing My Own Portfolio</h1>
+          <p>My portfolio's README has a short checklist called Before each publish. Every link goes somewhere real. Check desktop and phone widths. Tab through each page. One H1 per page. No email address. No em dashes.</p>
+          <p>It's a good list. But for a QA engineer's own site, the only thing between a visitor and a broken page was me remembering to read it.</p>
+        </div>
+      </header>
+
+      <section class="section section--article" aria-labelledby="scene-heading">
+        <div class="wrap wrap--content">
+          <h2 id="scene-heading">The first run</h2>
+          <p>The first time the automated checks ran, most of the site passed. One page didn't: my case study, Quality Is Glue Work.</p>
+          <p>The accessibility scan flagged a traceability table as a serious issue. On a phone, the table is wider than the screen, so it scrolls sideways. A mouse or a finger can do that. A keyboard can't, because nothing in the table could take focus. Someone navigating by keyboard would see half a table and have no way to reach the rest.</p>
+          <p>The page had been reviewed and published. Nobody had tried to scroll that table with a keyboard on a phone-sized screen.</p>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="believe-heading">
+        <div class="wrap wrap--content">
+          <h2 id="believe-heading">What I believe</h2>
+          <p>A checklist is a promise you have to remember to keep. A test keeps it for you. That doesn't make the checklist useless. It makes it a draft: each line is a test waiting to be written, or a reminder that a person still has to look.</p>
+          <p>It's the same small-team habit I bring everywhere else. Find the check that keeps getting skipped, and make it cheap enough that it never does.</p>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="did-heading">
+        <div class="wrap wrap--content">
+          <h2 id="did-heading">What I did</h2>
+          <p>I built this with Claude, Anthropic's AI assistant. I asked for the checks, and Claude wrote the tests in Playwright and axe-core (both open source), chose many of the specific checks, and set up the workflow that runs them. My part was directing the work and deciding what to accept: what the tests covered, which failures were real, and which fixes went live.</p>
+          <p>Every test runs on every page at two widths, desktop (1440px) and phone (390px). Not every line on the list could become a test, so those stayed on the list.</p>
+          <figure class="mock" aria-labelledby="map-cap">
+            <span class="mock-label">From the repo</span>
+            <div class="mock-table-wrap" tabindex="0" role="region" aria-labelledby="map-cap">
+              <table class="checkmap">
+                <thead>
+                  <tr><th scope="col">Checklist line</th><th scope="col">Automated check</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Every link and button goes somewhere real</td><td>Internal links, images, and styles all load; no placeholder links</td></tr>
+                  <tr><td>Check desktop and phone widths</td><td>Every test runs at 1440px and 390px; no sideways scrolling</td></tr>
+                  <tr><td>Tab through each page: visible focus, logical order, skip link works</td><td>Skip link comes first and jumps to the main content; every focusable element shows a focus ring <span class="manual">Logical order: still manual</span></td></tr>
+                  <tr><td>One H1 per page; headings step down in order</td><td>Heading check on every page</td></tr>
+                  <tr><td>No email address or confidential details</td><td>No email addresses or mailto links <span class="manual">Confidential details: still manual</span></td></tr>
+                  <tr><td>No em dashes; claims match real experience</td><td>No em dashes <span class="manual">Claims: still manual</span></td></tr>
+                  <tr><td><em>Not on the list</em></td><td>Accessibility scan against WCAG 2.1 AA; alt text; share previews for LinkedIn</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <figcaption id="map-cap">Each line from the README checklist and the test that now covers it. The parts a test can't judge stay on the list.</figcaption>
+          </figure>
+          <p>Next, Claude checked the tests themselves. A test that can't fail isn't protecting anything, so it planted two bugs on the About page: a skipped heading level and an em dash. Both tests failed, the way they should. Then it put the page back, and they passed.</p>
+          <p>Last, Claude added a GitHub Actions workflow so the checks run on every push. If something fails, the report is saved with the run.</p>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="changed-heading">
+        <div class="wrap wrap--content">
+          <h2 id="changed-heading">What it changed, and what I'd refine now</h2>
+          <p>The table bug got fixed: both tables can now take keyboard focus, and each is labeled by its caption. One of the first failures was the test's fault, not the site's. A check on page descriptions was too strict, so Claude fixed the test. That's worth remembering: a red result is a question, not a verdict.</p>
+          <p>The checks now run in under a minute on every push, and GitHub Actions is free for public repositories.</p>
+          <p>The tests didn't catch everything. When I added my conference paper page, every test passed. But a screenshot Claude took at phone width showed a comparison table that hid its most important column off the edge of the screen. Nothing was technically broken. It just didn't work for the reader. We rebuilt it as cards.</p>
+          <p>That's the refinement I'd make next. Screenshot comparison would catch layout changes between versions. A screen reader pass is still manual, and it should stay on the list.</p>
+        </div>
+      </section>
+
+      <section class="section section--gray" aria-labelledby="takeaways-heading">
+        <div class="wrap wrap--content">
+          <h2 id="takeaways-heading">Take it with you</h2>
+          <ul class="takeaways">
+            <li><strong>Turn your checklist into tests, one line at a time.</strong> Start with the line you skip most. Keep the lines a test can't judge on the list.</li>
+            <li><strong>Prove each test can fail.</strong> Plant the bug it's meant to catch, watch it go red, then put things back.</li>
+            <li><strong>Look anyway.</strong> Passing tests tell you nothing is broken. Only looking tells you it works for the person reading it.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="forward-heading">
+        <div class="wrap wrap--content">
+          <h2 id="forward-heading">Looking forward</h2>
+          <p>Working with Claude made the code the fast part. That left my time for the part QA is for: deciding what done means, and making sure the checks mean something.</p>
+          <p>I'm hopeful about that trade. The tests and the reasoning behind them are public in <a href="https://github.com/zeeatwork/zenziali-site" target="_blank" rel="noopener noreferrer">my site's repository<span class="visually-hidden"> (opens in a new tab)</span></a>, so you can read them, run them, or borrow them.</p>
+        </div>
+      </section>
+    </article>
+
+    <section class="section section--teal" aria-labelledby="cta-heading">
+      <div class="wrap wrap--content">
+        <h2 id="cta-heading">Let's Talk Quality</h2>
+        <p>If you're building a team, solving an interesting quality problem, or just want to talk about testing, I'd be glad to connect.</p>
+        <div class="button-row">
+          <a class="button button--reversed" href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Get in Touch on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><a href="https://github.com/zeeatwork" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+      </ul>
+      <p>&copy; 2026 Zenzi Ali</p>
+    </div>
+  </footer>
+</body>
+</html>

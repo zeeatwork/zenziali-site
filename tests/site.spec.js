@@ -9,6 +9,8 @@ const pages = [
   { path: '/case-studies.html', name: 'Case Studies' },
   { path: '/quality-is-glue-work.html', name: 'Quality Is Glue Work' },
   { path: '/nimble-not-agile.html', name: 'Nimble, not Agile' },
+  { path: '/projects.html', name: 'Projects' },
+  { path: '/testing-my-own-portfolio.html', name: 'Testing My Own Portfolio' },
 ];
 
 for (const { path, name } of pages) {

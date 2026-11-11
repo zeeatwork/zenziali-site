@@ -770,3 +770,17 @@ li {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* Checklist-to-test table (project page) */
+.checkmap td:first-child {
+  white-space: normal;
+  width: 45%;
+}
+
+.manual {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #4a5355;
+}
