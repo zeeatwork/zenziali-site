@@ -45,18 +45,20 @@
           <p>As the developers demoed features, conversations started that should have happened months earlier. The code worked. It just didn't match the client's needs or the way they actually worked, and often the fix wasn't small. Sometimes ten hours of client time had gone into a feature that had nothing to do with the client's goals.</p>
           <p>After each miss, the developer noted what went wrong and the implementation team went back to the client with more questions. Gaps stayed anyway. Questions moved like a game of telephone, from developer to product to implementation to client, and every round cost time.</p>
           <p>I kept watching for a few weeks. When my manager acknowledged the project would be delayed again, I mapped it out literally: every step from a client conversation to a finished feature, and every hand and department it passed through before the client could review it. I also went through our CRM and found excellent notes going back more than a year. The deal itself had been in progress for about three years.</p>
-          <!-- DRAFT MOCK 1: process map. Steps are taken from the story text; confirm or correct against the real map. -->
+          <!-- MOCK 1: process map. Steps are taken from the story text. Filled circles mark where the client is involved. -->
           <figure class="mock" aria-labelledby="mock1-cap">
             <span class="mock-label">Simplified recreation</span>
-            <ol class="handoff">
-              <li>Client conversation</li>
-              <li>Implementation</li>
-              <li>Product</li>
-              <li>Developer</li>
-              <li>Demo for client review</li>
-            </ol>
-            <p class="handoff-loop">↺ Each miss in a demo sent new questions back down the same chain.</p>
-            <figcaption id="mock1-cap">A simplified version of my map: every hand a request passed through before the client saw it.</figcaption>
+            <div class="flow">
+              <ol class="flow-steps">
+                <li class="flow-step flow-step--client"><span class="flow-num" aria-hidden="true">1</span><span class="flow-text">Client conversation</span></li>
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">2</span><span class="flow-text">Implementation</span></li>
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">3</span><span class="flow-text">Product</span></li>
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">4</span><span class="flow-text">Developer</span></li>
+                <li class="flow-step flow-step--client"><span class="flow-num" aria-hidden="true">5</span><span class="flow-text">Demo for client review</span></li>
+              </ol>
+              <p class="flow-return"><span class="flow-return-icon" aria-hidden="true">↺</span> Each miss in a demo sent new questions back through the same chain.</p>
+            </div>
+            <figcaption id="mock1-cap">A simplified version of my map: every hand a request passed through before the client saw it. Filled circles mark the only steps that involved the client.</figcaption>
           </figure>
           <p>I wasn't on the project. But it mattered for revenue, the people were fantastic, and as the company's entire QA team, I wanted it to go well.</p>
         </div>
@@ -83,18 +85,18 @@
           </ul>
           <p>Later stages covered what and how to test, and working with engineering on permanent test personas that other users couldn't easily edit.</p>
           <p>In my next one-on-one, I showed my manager the map and the plan, but I focused on the change I thought would have the most impact: adding example mapping to the overdue project. I'd built an example mapping template for our team, and I was excited to share it.</p>
-          <!-- DRAFT MOCK 2: example mapping. Fictional sample data (membership CRM), not from the real project. -->
+          <!-- DRAFT MOCK 2: example mapping. Fictional sample data (online store), not from the real project. -->
           <figure class="mock" aria-labelledby="mock2-cap">
             <span class="mock-label">Mock example · Sample data</span>
             <div class="example-map">
-              <div class="em-story"><p><strong>Story:</strong> As a membership coordinator, I can renew a member's annual dues in the CRM.</p></div>
-              <div class="em-rule"><p><strong>Rule:</strong> Renewal opens 60 days before the membership expires.</p></div>
-              <div class="em-rule"><p><strong>Rule:</strong> Members lapsed more than 90 days rejoin as new members.</p></div>
-              <div class="em-example"><p><strong>Example:</strong> Sample Member A expires Mar 31 and renews Feb 1. Renewal is allowed.</p></div>
-              <div class="em-example"><p><strong>Example:</strong> Sample Member B lapsed 120 days ago. They go to the new-member form.</p></div>
-              <div class="em-question"><p><strong>Question:</strong> Do lifetime members ever see a renewal notice?</p></div>
+              <div class="em-story"><p><strong>Story:</strong> As a customer service rep, I can start a return for a customer's order.</p></div>
+              <div class="em-rule"><p><strong>Rule:</strong> Returns are open for 30 days after delivery.</p></div>
+              <div class="em-rule"><p><strong>Rule:</strong> Returns after 30 days get store credit instead of a refund.</p></div>
+              <div class="em-example"><p><strong>Example:</strong> Sample Order A was delivered Mar 1 and returned Mar 20. It gets a refund.</p></div>
+              <div class="em-example"><p><strong>Example:</strong> Sample Order B was delivered 45 days ago. It gets store credit.</p></div>
+              <div class="em-question"><p><strong>Question:</strong> Can final-sale items be returned at all?</p></div>
             </div>
-            <figcaption id="mock2-cap">Example mapping layout: one story, its rules, concrete examples, and open questions for the client. Fictional data for a sample membership CRM.</figcaption>
+            <figcaption id="mock2-cap">Example mapping layout: one story, its rules, concrete examples, and open questions for the client. Fictional data for a sample online store.</figcaption>
           </figure>
           <p>He was enthusiastic and agreed with my read of the pain points. His challenge was buy-in. Product was three people, and every change needed time from implementation, engineering, and customer support. The overdue project was at a critical point, and everyone's time was already committed to it.</p>
           <p>So I pivoted. Once I realized the plan wouldn't start in Q1 or Q2, I looked for work I could do alone that would support the project now and prepare the team for when it was over. Choosing test management software was already on my list, and once I had it, I wanted to put it to use.</p>
@@ -109,13 +111,13 @@
                   <tr><th scope="col">ID</th><th scope="col">Test</th><th scope="col">Source</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>TC-101</td><td>Renewal reminder emails send automatically 60, 30, and 7 days before expiry.</td><td>Sample contract, Automation, p. 33</td></tr>
-                  <tr><td>TC-102</td><td>Event registration applies member pricing to active members only.</td><td>Sample contract, Events, p. 18</td></tr>
-                  <tr><td>TC-103</td><td>Member import maps name, member ID, and join date with no lost records.</td><td>Sample Addendum A, Data migration, p. 4</td></tr>
+                  <tr><td>TC-101</td><td>Shipping update emails send automatically when an order ships, is out for delivery, and is delivered.</td><td>Sample contract, Automation, p. 33</td></tr>
+                  <tr><td>TC-102</td><td>Checkout applies sale prices only while the sale is active.</td><td>Sample contract, Pricing, p. 18</td></tr>
+                  <tr><td>TC-103</td><td>Order import maps customer name, order ID, and order date with no lost records.</td><td>Sample Addendum A, Data migration, p. 4</td></tr>
                 </tbody>
               </table>
             </div>
-            <figcaption id="mock3-cap">The extra column: every AI-drafted test names where it came from, so I could check it against the original. Fictional data for a sample membership CRM.</figcaption>
+            <figcaption id="mock3-cap">The extra column: every AI-drafted test names where it came from, so I could check it against the original. Fictional data for a sample online store.</figcaption>
           </figure>
 
           <!-- DRAFT MOCK 4: traceability in both directions. Fictional sample data. -->
@@ -127,13 +129,13 @@
                   <tr><th scope="col">Requirement (source)</th><th scope="col">Tests in plan</th><th scope="col">Test run 1</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>REQ-01 Automated renewal reminders (Sample contract, p. 33)</td><td>TC-101, TC-104</td><td>Pass, Pass</td></tr>
-                  <tr><td>REQ-02 Member event pricing (Sample contract, p. 18)</td><td>TC-102</td><td>Fail (lapsed member got member price)</td></tr>
-                  <tr><td>REQ-03 Member data import (Sample Addendum A, p. 4)</td><td>TC-103, TC-105</td><td>Pass, Not run</td></tr>
+                  <tr><td>REQ-01 Automated shipping updates (Sample contract, p. 33)</td><td>TC-101, TC-104</td><td>Pass, Pass</td></tr>
+                  <tr><td>REQ-02 Sale pricing (Sample contract, p. 18)</td><td>TC-102</td><td>Fail (expired sale price still applied)</td></tr>
+                  <tr><td>REQ-03 Order data import (Sample Addendum A, p. 4)</td><td>TC-103, TC-105</td><td>Pass, Not run</td></tr>
                 </tbody>
               </table>
             </div>
-            <figcaption id="mock4-cap">A traceability matrix: from any requirement you can find its tests, and from any test run you can find the requirement. Fictional data for a sample membership CRM.</figcaption>
+            <figcaption id="mock4-cap">A traceability matrix: from any requirement you can find its tests, and from any test run you can find the requirement. Fictional data for a sample online store.</figcaption>
           </figure>
         </div>
       </section>

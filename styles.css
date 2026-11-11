@@ -384,36 +384,139 @@ li {
   color: var(--deep-teal);
 }
 
-/* Handoff chain */
-.handoff {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-30) var(--space-60);
+/* Handoff flow (process map). Mobile first: vertical steps. */
+.flow {
+  --flow-dot: 2.5rem;
+}
+
+.flow-steps {
+  display: grid;
+  gap: var(--space-40);
   list-style: none;
+  margin: 0;
   padding: 0;
-  margin: 0;
 }
 
-.handoff li {
+.flow-step {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-40);
   margin: 0;
-  padding: var(--space-30) var(--space-40);
+}
+
+.flow-num {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--flow-dot);
+  height: var(--flow-dot);
   border: 2px solid var(--deep-teal);
-  border-radius: var(--radius-card);
-  background: var(--warm-ivory);
-}
-
-.handoff li + li::before {
-  content: "→";
-  position: absolute;
-  left: calc(-1 * var(--space-50));
+  border-radius: 50%;
+  background: var(--white);
   color: var(--deep-teal);
+  font-weight: 700;
 }
 
-.handoff-loop {
-  margin: var(--space-40) 0 0;
-  color: var(--focus);
+.flow-step--client .flow-num {
+  background: var(--deep-teal);
+  color: var(--warm-ivory);
+}
+
+.flow-text {
+  line-height: 1.3;
+}
+
+/* Connector line and arrowhead into each step after the first */
+.flow-step + .flow-step::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--flow-dot) / 2 - 1px);
+  bottom: 100%;
+  width: 2px;
+  height: var(--space-40);
+  background: var(--deep-teal);
+}
+
+.flow-step + .flow-step::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--flow-dot) / 2 - 5px);
+  top: -7px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--deep-teal);
+}
+
+.flow-return {
+  position: relative;
+  margin: var(--space-50) 0 0;
+  padding: var(--space-30) var(--space-40);
+  border: 2px dashed var(--deep-teal);
+  border-radius: var(--radius-card);
+  color: var(--ink);
+}
+
+.flow-return-icon {
+  color: var(--deep-teal);
+  font-weight: 700;
+}
+
+@media (min-width: 700px) {
+  .flow-steps {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+  }
+
+  .flow-step {
+    flex-direction: column;
+    gap: var(--space-30);
+    text-align: center;
+  }
+
+  .flow-text {
+    max-width: 9rem;
+  }
+
+  .flow-step + .flow-step::before {
+    left: auto;
+    bottom: auto;
+    right: 50%;
+    top: calc(var(--flow-dot) / 2 - 1px);
+    width: 100%;
+    height: 2px;
+  }
+
+  .flow-step + .flow-step::after {
+    left: auto;
+    right: calc(50% + var(--flow-dot) / 2 + 2px);
+    top: calc(var(--flow-dot) / 2 - 5px);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid var(--deep-teal);
+    border-right: 0;
+  }
+
+  /* Return path: dashed U from step 5 back up to step 1 */
+  .flow-return {
+    margin: var(--space-40) 10% 0;
+    padding: var(--space-50) var(--space-40) var(--space-30);
+    border-top: 0;
+    border-radius: 0 0 var(--radius-card) var(--radius-card);
+    text-align: center;
+  }
+
+  .flow-return::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: -8px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid var(--deep-teal);
+  }
 }
 
 /* Example mapping */
