@@ -1194,3 +1194,15 @@ li {
 .section--article h3 {
   margin-top: var(--space-60);
 }
+
+/* Bar rows with a short description under the label */
+.bar-row--desc {
+  grid-template-areas: "label value" "desc desc" "track track";
+}
+
+.bar-desc {
+  grid-area: desc;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  color: #4a5355;
+}
