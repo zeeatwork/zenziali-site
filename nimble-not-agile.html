@@ -52,10 +52,11 @@
       <section class="section section--article" aria-labelledby="about-paper-heading">
         <div class="wrap wrap--content">
           <h2 id="about-paper-heading">Why I wrote it</h2>
-          <p>I think one of the hardest things a professional can do is distill their own process so someone else can repeat it.</p>
-          <p>I've often worked as the only full-time quality engineer. In a small company, that means a wide range of duties, from everyday manual QA to company process and strategy. There's a second challenge, too. The team might support the idea of QA but not feel the need to improve or iterate on their practices until a major defect shows up.</p>
-          <p>Small and solo QA teams need a process that works with the team they have, not the idealized, cookie-cutter engineering team that books and documentation use as their example. That's what inspired this paper. I wanted small teams, even ones without decision-making power, to be able to build processes that improve quality, whether buy-in is small or large.</p>
-          <p>When I wrote it, our testing team was a team of not quite two. The engineers built with Basecamp's Shape Up method: six-week cycles, no sprints, no backlogs, and very little room set aside for testing. Most testing lifecycle models are built to match Scrum or Kanban, so I didn't have a playbook to follow. I also didn't want to change a process my team was happy with. So I asked a different question: how could I add testing to the process we already had, without becoming a bottleneck?</p>
+          <p>When I joined the team in 2021, I knew I could thrive there. I tend to over-analyze and over-prepare. My teammates were action-oriented and experienced enough to adjust on the fly. Their practical way of shipping software felt like the right partner for the analytical way I think about quality.</p>
+          <p>The team built with Basecamp's Shape Up method: six-week cycles, no sprints, no backlogs. Shape Up is fast and focused on solutions, but it leaves little room or expectation for testing. QA comes in at the end to explore edge cases. Most of our testing was product validation for our clients, and no one expected it to start early.</p>
+          <p>Box checking and rubber-stamping a finished product isn't satisfying testing work. I believe quality can be built into any process. And Shape Up isn't alone in how it sees the tester. Many testing professionals feel like second-class citizens on their teams and wonder exactly where they fit in.</p>
+          <p>Luckily, my team was devoted to building high-quality software and wanted more thorough testing. Our testing team was a team of not quite two, so the questions were mine to answer. How could I add testing to a well-oiled process the team was happy with? How could I add value and assess risk without becoming a bottleneck? Where could I shift testing left and still keep our business goals first?</p>
+          <p>Most testing lifecycle models are built to match Scrum or Kanban, so I didn't have a playbook to follow. I wrote the paper for testers in the same spot: solo testers and small teams, teams that build and ship fast, teams with an unorthodox development model, and teams that manage several products with different needs. It isn't a case against Shape Up, Agile, or Scrum. It's a way to build a testing routine that fits the team you have.</p>
           <!-- Adapted from Figure 2 of the paper (Comparison of SDLC Models), condensed. -->
           <figure class="mock" aria-labelledby="sdlc-cap">
             <span class="mock-label">From the paper · Condensed</span>
@@ -92,7 +93,7 @@
                 <dl>
                   <dt>When testing happens</dt><dd>Inside the six-week cycle</dd>
                   <dt>Documentation</dt><dd>Light; no backlog, so little is written down</dd>
-                  <dt>Automation</dt><dd>Not expected</dd>
+                  <dt>Automation</dt><dd>Not practical for this test approach</dd>
                   <dt>Tester's role</dt><dd>Edge cases only; designers and developers own quality</dd>
                 </dl>
               </div>
@@ -110,6 +111,20 @@
             <li>Small process changes, each matched to something the SWOT turned up. They included moving test cases into test management software, taking testing discussions out of Slack, and running ensemble testing sessions with developers.</li>
             <li>A map of test activities to each phase of our development cycle.</li>
             <li>Two common team scenarios, The Lone Tester and Team Just Ship It, with a starting framework for each.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--article" aria-labelledby="changed-heading">
+        <div class="wrap wrap--content">
+          <h2 id="changed-heading">What it changed</h2>
+          <p>My team didn't review metrics often, so I gathered whatever data I could pull together quickly. Here's what I saw:</p>
+          <ul>
+            <li>I spent more time on test planning and test design, and test execution got faster. My estimates for test completion got more accurate.</li>
+            <li>I didn't find more bugs overall, but I found high-priority bugs much earlier in testing.</li>
+            <li>Test analysis gave us a stronger risk assessment, and we used it to increase test coverage. Reading shaping documents, analytics, and user stories led to cross-browser and cross-platform testing updates that made our products more reliable for clients on older hardware and browsers.</li>
+            <li>Test management software gave us standardized test reports, and stakeholders could see testing status for themselves. Traceability improved too, because I could add software, operating system, and hardware versions to each test run.</li>
+            <li>Because I showed my work more often, the team got a deeper understanding of everything quality management involves. Running test cases is only a small part of it.</li>
           </ul>
           <figure class="pull-quote">
             <blockquote>
