@@ -1,0 +1,13 @@
+{
+  "name": "zenziali-site-tests",
+  "private": true,
+  "description": "Quality checks for zenziali.com: accessibility, keyboard, layout, links, and writing rules.",
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.48.0"
+  }
+}
