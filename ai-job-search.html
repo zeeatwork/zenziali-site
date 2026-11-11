@@ -52,29 +52,84 @@
       <section class="section section--article" aria-labelledby="scene-heading">
         <div class="wrap wrap--content">
           <h2 id="scene-heading">More than 150 applications, and no one to talk to</h2>
-          <p>By Oct 20, my tracker had more than 150 applications dated since June. Not one had led to a phone screen, a personal reply, or a rejection that wasn't a template. A few rejections arrived within hours, which looked a lot like an automated filter.</p>
-          <p>The market is tough, and I know that. But zero activity could also point to a problem on my side. And part of my side was a system I'd built myself.</p>
+          <figure class="mock" aria-labelledby="stats-cap">
+            <span class="mock-label">From my tracker</span>
+            <ul class="stats">
+              <li class="stat"><span class="stat-num">150+</span><span class="stat-text">applications, June to Oct 20</span></li>
+              <li class="stat"><span class="stat-num">0</span><span class="stat-text">phone screens</span></li>
+              <li class="stat"><span class="stat-num">0</span><span class="stat-text">personal replies to an application</span></li>
+            </ul>
+            <figcaption id="stats-cap">Where things stood on Oct 20. A few rejections arrived within hours, which looked a lot like an automated filter.</figcaption>
+          </figure>
+          <p>The market is tough. But zero activity could also point to a problem on my side, and part of my side was a system I'd built myself.</p>
         </div>
       </section>
 
       <section class="section section--article" aria-labelledby="believe-heading">
         <div class="wrap wrap--content">
           <h2 id="believe-heading">What I believe</h2>
-          <p>Lots of people are building their own AI job search agents right now. I understand why. You get a tool with context about your skills and the kind of place you want to work, and it gets sharper the more you tell it.</p>
-          <p>But software made for the general public is tested to work across a lot of people. A personal agent is built for one person. That person is the only user, so they're also the only tester. If nobody tests it, nobody finds out where it's wrong.</p>
+          <figure class="pull-quote">
+            <blockquote>
+              <p>A personal agent is built for one person. Who's testing it?</p>
+            </blockquote>
+            <figcaption>From my notes, October 2026</figcaption>
+          </figure>
+          <p>Software for the public gets tested across lots of people. A personal AI agent has one user, so that user is also the only tester.</p>
         </div>
       </section>
 
       <section class="section section--article" aria-labelledby="did-heading">
         <div class="wrap wrap--content">
           <h2 id="did-heading">What I did</h2>
-          <p>I treated my search like a product with one very demanding client: me. It went through a lot of versions. A daily alert. Then a manual search. Then a more automated search, with some web crawling and some manual testing. And so on.</p>
-          <p>The first design was built for volume: pull up to 500 recent postings, remove duplicates, score them, and send the high scorers to a To Apply list. The first pilot hit real limits right away. One large job board flooded the model with hundreds of listings, and another needed JavaScript the search tool couldn't run.</p>
-          <p>So the search moved from volume to evidence. Before anything gets a score, it checks my tracker for duplicates, finds the employer's own posting, checks the location rules, and checks hard requirements. And I keep submission control: the assistant can't mark anything applied without my confirmation.</p>
-          <p>Some of the best test cases came from jobs I found myself. In October, I shared a role at a healthcare software company that the search had never surfaced. It had only seen a different role at the same company, on a job board, and it couldn't read the employer's own site, so it set that one aside as needing a manual check. Once I verified my role, it rated 91%. On Oct 19, the rules changed: a posting the search can't verify now gets a provisional rating, and any at 85% or higher goes to the top of my daily report so I can find the employer's link myself.</p>
-          <p>Another miss was a rule doing exactly what it was told. The search found a role at a consumer reviews company and declined it over a degree requirement. When I checked the employer's listing, the degree was only preferred. I restored the role and applied. The next day, the rule changed: required qualifications are hard stops, a degree passes when the posting accepts equivalent experience, and preferred items only lower the rating.</p>
-          <p>Misses went the other way, too. In late October, one feed let through two city-based roles that weren't remote. I caught them, and the fix was a check on the posting's remote wording.</p>
-          <p>Each mistake became a rule, the way a bug becomes a regression test.</p>
+          <p>I treated my search like a product with one very demanding client: me.</p>
+          <h3>Version after version</h3>
+          <figure class="mock" aria-labelledby="versions-cap">
+            <span class="mock-label">Versions</span>
+            <div class="flow flow--4">
+              <ol class="flow-steps">
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">1</span><span class="flow-text">A daily job alert</span></li>
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">2</span><span class="flow-text">A manual search</span></li>
+                <li class="flow-step"><span class="flow-num" aria-hidden="true">3</span><span class="flow-text">An automated search built for volume</span></li>
+                <li class="flow-step flow-step--client"><span class="flow-num" aria-hidden="true">4</span><span class="flow-text">An evidence-first search</span></li>
+              </ol>
+            </div>
+            <figcaption id="versions-cap">Each version fixed something the last one got wrong.</figcaption>
+          </figure>
+          <p>The first automated design pulled up to 500 postings at a time. The first pilot broke right away: one job board flooded the model with hundreds of listings, and another needed JavaScript the search tool couldn't run.</p>
+          <h3>Evidence before a score</h3>
+          <p>Now nothing gets a score until it passes four checks:</p>
+          <ol class="gates">
+            <li>It isn't already on my tracker.</li>
+            <li>The employer's own posting is found.</li>
+            <li>The location rules fit.</li>
+            <li>The hard requirements are met.</li>
+          </ol>
+          <p>And only I can mark a role as applied.</p>
+          <h3>Misses became rules</h3>
+          <figure class="mock" aria-labelledby="misses-cap">
+            <span class="mock-label">From my tracker · Companies anonymized</span>
+            <ul class="miss-cards">
+              <li class="miss-card">
+                <p class="miss-type">Missed entirely</p>
+                <p><strong>The role:</strong> QA at a healthcare software company.</p>
+                <p><strong>Why:</strong> the search only saw a different role at the same company and couldn't read the employer's site. Once I verified it, it rated 91%.</p>
+                <p class="miss-rule"><strong>Rule now (Oct 19):</strong> unverified postings get a provisional rating, and any at 85% or higher lead my daily report.</p>
+              </li>
+              <li class="miss-card">
+                <p class="miss-type">Wrongly declined</p>
+                <p><strong>The role:</strong> QA at a consumer reviews company.</p>
+                <p><strong>Why:</strong> declined over a degree. The employer's listing said the degree was only preferred, so I applied.</p>
+                <p class="miss-rule"><strong>Rule now (Oct 23):</strong> required qualifications are hard stops, a degree passes with "or equivalent experience," and preferred items only lower the rating.</p>
+              </li>
+              <li class="miss-card">
+                <p class="miss-type">Let through</p>
+                <p><strong>The roles:</strong> two city-based jobs.</p>
+                <p><strong>Why:</strong> a feed passed them as remote. I caught them.</p>
+                <p class="miss-rule"><strong>Rule now (late Oct):</strong> the search checks each posting's remote wording.</p>
+              </li>
+            </ul>
+            <figcaption id="misses-cap">Three misses, and the rules that came after them.</figcaption>
+          </figure>
           <figure class="mock" aria-labelledby="lessons-cap">
             <span class="mock-label">From my notes</span>
             <div class="mock-table-wrap" tabindex="0" role="region" aria-labelledby="lessons-cap">
@@ -83,46 +138,91 @@
                   <tr><th scope="col">What I learned</th><th scope="col">What the search checks now</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>A job board result is a lead, not proof of an open role.</td><td>Find the employer's own posting before anything else.</td></tr>
-                  <tr><td>A page that loads doesn't prove applications are still open.</td><td>Confirm the application page is live.</td></tr>
-                  <tr><td>Remote isn't automatically remote where I live.</td><td>Check the posting's location rules.</td></tr>
-                  <tr><td>Unknown is a valid answer.</td><td>Missing facts stay marked unknown instead of becoming a guess either way.</td></tr>
-                  <tr><td>A failed source isn't the same as zero jobs.</td><td>Report which sources failed, so an empty result is visible as a failure.</td></tr>
-                  <tr><td>Postings can contain text aimed at an AI.</td><td>Scan each posting for instructions like "ignore previous instructions," and log it instead of rating it.</td></tr>
+                  <tr><td>A job board result is a lead, not proof of an open role.</td><td>Find the employer's own posting first.</td></tr>
+                  <tr><td>A page that loads doesn't prove applications are open.</td><td>Confirm the application page is live.</td></tr>
+                  <tr><td>Unknown is a valid answer.</td><td>Missing facts stay "unknown" instead of becoming a guess.</td></tr>
+                  <tr><td>A failed source isn't the same as zero jobs.</td><td>Report which sources failed.</td></tr>
+                  <tr><td>Postings can contain text aimed at an AI.</td><td>Scan for instructions like "ignore previous instructions," and log the posting instead of rating it.</td></tr>
                 </tbody>
               </table>
             </div>
-            <figcaption id="lessons-cap">Lessons from early versions of the search, and the check each one became.</figcaption>
+            <figcaption id="lessons-cap">Lessons from early versions, and the check each one became.</figcaption>
           </figure>
-          <p>That last rule came from something the assistant caught, not me: a line in a scraped posting that told an AI to state its model and summarize its instructions. After I made scanning for it a rule, the scan flagged two more postings in its first month.</p>
-          <p>Then I tested the score itself. When I looked into how the fit percentage was calculated, I found it never had a formula. It was the assistant's overall judgment, with no weights. So I rescored my last 20 applications with a method closer to how applicant tracking systems sort candidates.</p>
-          <figure class="mock" aria-labelledby="score-cap">
+          <p>That last check came from something the assistant caught, not me: a line in a scraped posting telling an AI to state its model and summarize its instructions. The scan flagged two more postings in its first month.</p>
+          <h3>Two questions, two scores</h3>
+          <p>When I looked into how the fit percentage was calculated, I found it never had a formula. It was the assistant's overall judgment. So I rescored my last 20 applications the way an applicant tracking system might: required qualifications for 70 points, keyword coverage for 30.</p>
+          <figure class="mock" aria-labelledby="scores-cap">
+            <span class="mock-label">Two scores · Sample role, sample happiness scores</span>
+            <div class="score-panels">
+              <div class="score-panel">
+                <h4 class="score-q">Fit score: would a hiring system pass my resume?</h4>
+                <ul class="bars">
+                  <li class="bar-row"><span class="bar-label">Original rating</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:89%"></span></span><span class="bar-value">about 89%</span></li>
+                  <li class="bar-row"><span class="bar-label">ATS-style rescore</span><span class="bar-track" aria-hidden="true"><span class="bar-range" style="--from:56%;--to:90%"></span></span><span class="bar-value">56% to 90%</span></li>
+                </ul>
+                <p class="score-note">Same 20 applications. Most rescores landed in the 70s.</p>
+              </div>
+              <div class="score-panel">
+                <h4 class="score-q">Happiness index: would I want this job?</h4>
+                <ul class="bars">
+                  <li class="bar-row"><span class="bar-label">Skills</span><span class="bar-track" aria-hidden="true"><span class="bar-fill bar-fill--warm" style="--w:90%"></span></span><span class="bar-value">9</span></li>
+                  <li class="bar-row"><span class="bar-label">Seniority</span><span class="bar-track" aria-hidden="true"><span class="bar-fill bar-fill--warm" style="--w:80%"></span></span><span class="bar-value">8</span></li>
+                  <li class="bar-row"><span class="bar-label">Comp</span><span class="bar-track" aria-hidden="true"><span class="bar-fill bar-fill--warm" style="--w:80%"></span></span><span class="bar-value">8</span></li>
+                  <li class="bar-row"><span class="bar-label">Growth</span><span class="bar-track" aria-hidden="true"><span class="bar-fill bar-fill--warm" style="--w:80%"></span></span><span class="bar-value">8</span></li>
+                  <li class="bar-row"><span class="bar-label">Mission</span><span class="bar-track" aria-hidden="true"><span class="bar-fill bar-fill--warm" style="--w:70%"></span></span><span class="bar-value">7</span></li>
+                  <li class="bar-row"><span class="bar-label">Transparency</span><span class="bar-track" aria-hidden="true"><span class="bar-fill bar-fill--warm" style="--w:90%"></span></span><span class="bar-value">9</span></li>
+                </ul>
+                <p class="score-note">Average: <strong>8.2 out of 10</strong>. Unknown pay rates low.</p>
+              </div>
+            </div>
+            <figcaption id="scores-cap">The fit score asks whether I'll get through the filter. The happiness index asks whether I'd want the job. My tracker keeps them in separate columns.</figcaption>
+          </figure>
+          <p>The rescore kept finding the same missing words:</p>
+          <ul class="chips" aria-label="Terms my resume often missed">
+            <li>Agile</li><li>SDLC</li><li>REST</li><li>end-to-end</li><li>test cases</li><li>SaaS</li>
+          </ul>
+          <h3>Where good roles came from</h3>
+          <figure class="mock" aria-labelledby="yield-cap">
+            <span class="mock-label">From my search reports</span>
+            <p class="chart-title">Roles strong enough to tailor materials for, Sep 30 to Oct 23</p>
+            <ul class="bars">
+              <li class="bar-row"><span class="bar-label">Two job boards</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:100.0%"></span></span><span class="bar-value">about 12</span></li>
+              <li class="bar-row"><span class="bar-label">Watchlist boards</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:8.3%"></span></span><span class="bar-value">1 of about 22</span></li>
+              <li class="bar-row"><span class="bar-label">Employers' hiring sites</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:1.5%"></span></span><span class="bar-value">0 of about 44</span></li>
+              <li class="bar-row"><span class="bar-label">Company directory</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:1.5%"></span></span><span class="bar-value">0 of about 34</span></li>
+            </ul>
+            <figcaption id="yield-cap">Most of the payoff came from two places. So I changed where the search looks first.</figcaption>
+          </figure>
+          <h3>Testing my own records</h3>
+          <p>The reasons I'd passed on 277 roles lived in free-text notes, so they couldn't be counted. I tested a short list of categories on 10 rows, added the two the sample showed I needed, then labeled every role.</p>
+          <figure class="mock" aria-labelledby="reasons-cap">
             <span class="mock-label">From my tracker</span>
-            <div class="mock-table-wrap" tabindex="0" role="region" aria-labelledby="score-cap">
-              <table class="scoremap">
-                <thead>
-                  <tr><th scope="col">Rating</th><th scope="col">How it worked</th><th scope="col">Result</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Original fit score</td><td>The assistant's overall judgment. No formula, no weights.</td><td>Averaged about 89%</td></tr>
-                  <tr><td>ATS-style rescore</td><td>Required qualifications (70 points) plus keyword coverage (30 points), against the resume I actually sent</td><td>56% to 90%, mostly in the 70s</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <figcaption id="score-cap">The same 20 applications, rated two ways.</figcaption>
+            <p class="chart-title">Main reason I passed on a role</p>
+            <ul class="bars">
+              <li class="bar-row"><span class="bar-label">Skill gap</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:100.0%"></span></span><span class="bar-value">63</span></li>
+              <li class="bar-row"><span class="bar-label">Closed or unverified</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:96.8%"></span></span><span class="bar-value">61</span></li>
+              <li class="bar-row"><span class="bar-label">Seniority or years</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:57.1%"></span></span><span class="bar-value">36</span></li>
+              <li class="bar-row"><span class="bar-label">Location</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--w:52.4%"></span></span><span class="bar-value">33</span></li>
+            </ul>
+            <figcaption id="reasons-cap">Top four main reasons, out of 277 roles I passed up (as of Oct 19).</figcaption>
           </figure>
-          <p>The gaps repeated. My resume never said Agile or SDLC, and literal terms like REST, end-to-end, test cases, and SaaS were often missing.</p>
-          <p>I measured where good roles actually came from, too. Between Sep 30 and Oct 23, two job boards produced about 12 of the 13 roles strong enough to tailor materials for. Searches of employers' own hiring sites produced none of about 44 candidates, and my company directory produced none of about 34. So I changed where the search looks first.</p>
-          <p>I tested my own records, too. I'd logged 277 roles I passed up, but the reasons lived in free-text notes, so they couldn't be counted. I tried a short list of categories on 10 rows first, added the two the sample showed I needed, and then gave every role a primary and secondary reason. Along the way, I found two roles I thought I hadn't applied to that were already on my tracker. The tester's own data had bugs.</p>
+          <p>Along the way, I found two roles I thought I hadn't applied to that were already on my tracker. The tester's own data had bugs.</p>
         </div>
       </section>
 
       <section class="section section--article" aria-labelledby="changed-heading">
         <div class="wrap wrap--content">
           <h2 id="changed-heading">What it changed, and what I'd refine now</h2>
-          <p>I didn't throw out the old score. I rescored those 20 applications the new way and kept the old ratings beside them for comparison. I haven't decided yet whether the new score replaces the old one in the daily search. I also started an email log that matches each reply to an application, so I can see what actually comes back.</p>
-          <p>The passed-up list shaped my study plan. SQL came up more than any other missing skill, and it's often a small gap I can close in weeks, so I put it first.</p>
-          <p>What I'd refine: the categories only help if I keep using them. My passed-up list has grown past 700 roles, and most of the newer ones never got a category. I'd also ask what a score is made of on day one, not after more than 100 applications.</p>
+          <ul>
+            <li><strong>Study plan:</strong> SQL went first. It was the most common missing skill, and often a gap I can close in weeks.</li>
+            <li><strong>Scores:</strong> I kept the old fit ratings beside the new scores for comparison. I haven't decided yet whether the new score replaces the old one.</li>
+            <li><strong>Email log:</strong> each reply now gets matched to an application, so I can see what actually comes back.</li>
+          </ul>
+          <p>What I'd refine:</p>
+          <ul>
+            <li><strong>Keep the categories going.</strong> My passed-up list is past 700 roles, and most of the newer ones never got a category.</li>
+            <li><strong>Ask what a score is made of on day one,</strong> not after more than 100 applications.</li>
+          </ul>
         </div>
       </section>
 
@@ -140,8 +240,8 @@
       <section class="section" aria-labelledby="forward-heading">
         <div class="wrap wrap--content">
           <h2 id="forward-heading">Looking forward</h2>
-          <p>I thought about sharing my setup, but plenty of people have already shared their AI job search prompts. A good shared prompt saves you from learning every rule the hard way. What it can't share is the human part.</p>
-          <p>Now that AI can run the same search for everyone who clicked the same link, I keep coming back to one question: what's the differentiator? And how do I use and build a tool like this so it adds to my career, not just my application count? I don't have a neat answer yet. But testing the search has been the most useful part of it so far.</p>
+          <p>Plenty of people have shared their AI job search prompts. A good shared prompt saves you from learning every rule the hard way. What it can't share is the human part.</p>
+          <p>Now that AI can run the same search for everyone who clicked the same link, I keep asking: what's the differentiator? I don't have a neat answer yet. But testing the search has been the most useful part so far.</p>
         </div>
       </section>
 

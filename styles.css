@@ -993,3 +993,204 @@ li {
     grid-column: 3;
   }
 }
+
+/* AI job search: stat tiles */
+.stats {
+  display: grid;
+  gap: var(--space-40);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: var(--space-40);
+  border-radius: var(--radius-card);
+  background: var(--warm-gray);
+}
+
+.stat-num {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--deep-teal);
+}
+
+.stat-text {
+  line-height: 1.3;
+}
+
+@media (min-width: 700px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Four-step flow */
+@media (min-width: 700px) {
+  .flow--4 .flow-steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Numbered gates */
+.gates {
+  margin: 0 0 var(--space-40);
+  padding-left: 1.5rem;
+}
+
+.gates li {
+  margin-bottom: 0.25rem;
+}
+
+/* Miss cards */
+.miss-cards {
+  display: grid;
+  gap: var(--space-40);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.miss-card {
+  margin: 0;
+  padding: var(--space-40);
+  border: 1px solid rgba(32, 38, 40, 0.18);
+  border-top: 6px solid #9c4a33;
+  border-radius: var(--radius-card);
+  background: var(--warm-ivory);
+}
+
+.miss-card p {
+  margin: 0 0 var(--space-30);
+  line-height: 1.35;
+}
+
+.miss-type {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9c4a33;
+}
+
+.miss-card .miss-rule {
+  margin: var(--space-30) 0 0;
+  padding-top: var(--space-30);
+  border-top: 1px solid rgba(32, 38, 40, 0.15);
+  color: var(--deep-teal);
+}
+
+@media (min-width: 700px) {
+  .miss-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Horizontal bar charts */
+.chart-title {
+  margin: 0 0 var(--space-30);
+  font-weight: 700;
+}
+
+.bars {
+  display: grid;
+  gap: var(--space-30);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "label value" "track track";
+  gap: 0.2rem var(--space-30);
+  align-items: center;
+  margin: 0;
+}
+
+.bar-label { grid-area: label; line-height: 1.3; }
+.bar-value { grid-area: value; font-weight: 700; color: var(--deep-teal); white-space: nowrap; }
+
+.bar-track {
+  grid-area: track;
+  position: relative;
+  display: block;
+  height: 0.85rem;
+  border-radius: 999px;
+  background: var(--warm-gray);
+  overflow: hidden;
+}
+
+.bar-fill {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  border-radius: 999px;
+  background: var(--deep-teal);
+}
+
+.bar-fill--warm {
+  background: #e3b04b;
+}
+
+.bar-range {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--from);
+  width: calc(var(--to) - var(--from));
+  border-radius: 999px;
+  background: #9c4a33;
+}
+
+/* Two-score panels */
+.score-panels {
+  display: grid;
+  gap: var(--space-50);
+}
+
+.score-q {
+  margin: 0 0 var(--space-40);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.score-note {
+  margin: var(--space-30) 0 0;
+}
+
+@media (min-width: 700px) {
+  .score-panels {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Term chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-30);
+  list-style: none;
+  margin: 0 0 var(--space-50);
+  padding: 0;
+}
+
+.chips li {
+  margin: 0;
+  padding: 0.2rem 0.75rem;
+  border: 2px solid var(--deep-teal);
+  border-radius: 999px;
+  color: var(--deep-teal);
+  font-weight: 700;
+}
+
+/* More breathing room above subheadings in long articles */
+.section--article h3 {
+  margin-top: var(--space-60);
+}
