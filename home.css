@@ -1,0 +1,337 @@
+/* Homepage design E (color blocks, scrolling banner, number callouts).
+   Loaded only on index.html, scoped to body.home-e, so other pages keep
+   the current styles until they get their own E pass.
+   Mock: "zenziali.com homepage mocks" design canvas, board E (Nov 14, 2026). */
+
+.home-e {
+  --e-navy: #1e2d4f;
+  --e-ivory: #f4ece1;
+  --e-cream: #f6ddbf;
+  --e-peach: #f3cdA4;   /* hero and button accent */
+  --e-muted: #3b4660;   /* 9.6:1 on ivory */
+  --e-soft: #4a5670;    /* 7.2:1 on white */
+  --e-line: #c9bca9;
+  --e-pad: 64px;
+
+  background: var(--e-ivory);
+  color: var(--e-navy);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+}
+
+@media (max-width: 640px) {
+  .home-e { --e-pad: 24px; }
+}
+
+.home-e h1,
+.home-e h2,
+.home-e h3 {
+  font-family: "Outfit", "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.home-e a { color: var(--e-navy); }
+.home-e :focus-visible { outline: 3px solid var(--e-navy); outline-offset: 3px; }
+
+.home-e .wrap {
+  max-width: 1080px;
+  padding: 0 var(--e-pad);
+}
+
+/* Header sits inside the accent hero block */
+.home-e .site-header {
+  background: var(--e-peach);
+  border-bottom: 0;
+}
+
+.home-e .site-header .wrap { padding-top: 32px; padding-bottom: 0; }
+
+.home-e .site-nav a {
+  color: var(--e-navy);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.home-e .site-nav a:hover,
+.home-e .site-nav a[aria-current="page"] {
+  color: var(--e-navy);
+  border-bottom-color: var(--e-navy);
+}
+
+.home-e .site-nav li:last-child a {
+  border-color: var(--e-navy);
+  color: var(--e-navy);
+}
+
+.home-e .site-nav li:last-child a:hover {
+  background: var(--e-navy);
+  color: var(--e-cream);
+}
+
+.home-e .skip-link { background: var(--e-navy); color: var(--e-cream); }
+
+/* Buttons */
+.home-e .button {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border: 2px solid var(--e-navy);
+}
+
+.home-e .button--primary { background: var(--e-navy); color: var(--e-cream); }
+
+.home-e .button--accent {
+  display: inline-block;
+  background: var(--e-peach);
+  color: var(--e-navy);
+  border-color: var(--e-peach);
+}
+
+/* Hero */
+.e-hero {
+  background: var(--e-peach);
+  padding: 72px 0 104px;
+}
+
+.e-hero .eyebrow {
+  color: var(--e-navy);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.e-hero h1 {
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 960px;
+}
+
+.e-hero .lead {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  max-width: 640px;
+}
+
+/* White and navy block pair */
+.e-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
+.e-split__intro {
+  background: #ffffff;
+  padding: 72px var(--e-pad);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+.e-split__photo {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+.e-split h2 {
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1;
+  margin: 0;
+}
+
+.e-split__role {
+  margin: 16px 0 0;
+  font-size: 0.9375rem;
+  color: var(--e-soft);
+}
+
+.e-split__story {
+  background: var(--e-navy);
+  color: var(--e-cream);
+  padding: 72px var(--e-pad);
+  line-height: 1.65;
+}
+
+.e-split__story :focus-visible,
+.e-cta :focus-visible,
+.home-e .site-footer :focus-visible {
+  outline-color: var(--e-peach);
+}
+
+/* Scrolling banner */
+.e-banner {
+  display: flex;
+  align-items: stretch;
+  border-top: 2px solid var(--e-navy);
+  border-bottom: 2px solid var(--e-navy);
+}
+
+.e-banner__viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 26px 0;
+}
+
+.e-banner__track {
+  display: inline-flex;
+  gap: 32px;
+  animation: e-marquee 40s linear infinite;
+}
+
+.e-banner__text {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.e-banner.is-paused .e-banner__track { animation-play-state: paused; }
+
+.e-banner__toggle:focus-visible { outline-offset: -6px; }
+
+.e-banner__toggle {
+  flex: 0 0 auto;
+  min-width: 88px;
+  padding: 0 16px;
+  border: 0;
+  border-left: 2px solid var(--e-navy);
+  background: var(--e-ivory);
+  color: var(--e-navy);
+  font: 600 0.8125rem "Inter", sans-serif;
+  cursor: pointer;
+}
+
+@keyframes e-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Reduced motion: no scrolling, let the text wrap, hide the copy and the button */
+@media (prefers-reduced-motion: reduce) {
+  .e-banner__viewport { white-space: normal; padding: 26px var(--e-pad); }
+  .e-banner__track { animation: none; display: block; }
+  .e-banner__text[aria-hidden="true"],
+  .e-banner__toggle { display: none; }
+}
+
+/* Number callouts */
+.e-numbers { padding: 88px 0 24px; }
+
+.e-numbers .wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  row-gap: 40px;
+}
+
+.e-number {
+  border-left: 2px solid var(--e-navy);
+  padding: 4px 28px;
+}
+
+.e-number p { margin: 0; }
+
+.e-number__value {
+  font-family: "Outfit", sans-serif;
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.e-number__label {
+  margin-top: 12px !important;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--e-muted);
+}
+
+/* Approach section keeps its approved cards; only the band and heading change */
+.home-e .section--gray { background: transparent; }
+
+.home-e .section--gray h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.home-e .habit-card h3 { font-weight: 600; }
+
+/* Featured work cards */
+.e-work { padding: 24px 0 96px; }
+
+.e-work h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.e-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.e-card {
+  position: relative;
+  background: #ffffff;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.e-card p { margin: 0; font-size: 0.9375rem; line-height: 1.55; color: var(--e-muted); }
+
+.e-card .e-card__type {
+  order: -1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--e-soft);
+}
+
+.e-card h3 { margin: 0; font-size: 1.625rem; line-height: 1.2; }
+
+.e-card h3 a { text-decoration: none; }
+
+/* Whole card is clickable; the link text stays the accessible name */
+.e-card h3 a::after { content: ""; position: absolute; inset: 0; }
+.e-card:hover h3 a { text-decoration: underline; }
+
+.e-work__more { margin: 32px 0 0; font-weight: 600; }
+
+/* Closing block and footer */
+.e-cta {
+  background: var(--e-navy);
+  color: var(--e-cream);
+  padding: 72px 0;
+}
+
+.e-cta .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.e-cta .wrap > div { max-width: 640px; }
+
+.e-cta h2 { font-size: 2.25rem; margin-bottom: 20px; }
+
+.home-e .site-footer {
+  background: var(--e-navy);
+  color: var(--e-cream);
+  border-top: 1px solid rgba(246, 221, 191, 0.25);
+}
+
+.home-e .site-footer a { color: var(--e-cream); }

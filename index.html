@@ -18,10 +18,11 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
 </head>
-<body>
+<body class="home-e">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header">
@@ -40,13 +41,56 @@
   </header>
 
   <main id="main">
-    <section class="hero">
+    <section class="e-hero">
       <div class="wrap">
         <p class="eyebrow">Quality Engineering · Test Automation · Quality Strategy</p>
         <h1>Quality starts with understanding what matters.</h1>
         <p class="lead">I help teams understand risk, improve testing processes, and build software that works for the people who actually use it.</p>
         <div class="button-row">
           <a class="button button--primary" href="about.html">About Me</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="e-split" aria-labelledby="about-heading">
+      <div class="e-split__intro">
+        <img class="e-split__photo" src="images/zenzi-ali.jpg" width="620" height="775" alt="Zenzi Ali smiling, wearing clear-framed glasses and a rust-colored sweater in a bright office.">
+        <div>
+          <h2 id="about-heading">About Me</h2>
+          <p class="e-split__role">Zenzi Ali · Quality Engineer</p>
+        </div>
+      </div>
+      <div class="e-split__story">
+        <p>I came to Quality Engineering through a career built around solving problems, improving processes, and making complicated work easier to understand. Over the past five years, I've brought that perspective to software testing, test automation, quality strategy, and, more recently, AI evaluation.</p>
+        <p>I'm especially interested in the space where technical skill, curiosity, and quality thinking meet. Whether I'm investigating a failure, building automation, or watching how an AI model handles a question it wasn't built for, I want to understand not only whether something works, but why, for whom, and what could happen next.</p>
+        <a class="button button--accent" href="about.html">More About Me</a>
+      </div>
+    </section>
+
+    <section class="e-banner" aria-label="Three habits">
+      <div class="e-banner__viewport">
+      <div class="e-banner__track">
+        <p class="e-banner__text">Understand the risk <span aria-hidden="true">·</span> Build quality into the process <span aria-hidden="true">·</span> Keep the user in the conversation <span aria-hidden="true">·</span></p>
+        <p class="e-banner__text" aria-hidden="true">Understand the risk · Build quality into the process · Keep the user in the conversation ·</p>
+      </div>
+      </div>
+      <button class="e-banner__toggle" type="button" aria-pressed="false">Pause<span class="visually-hidden"> scrolling banner</span></button>
+    </section>
+
+    <!-- PLACEHOLDER: number callouts. Replace every [#] and [label] with real figures before merging to main. -->
+    <section class="e-numbers" aria-label="By the numbers">
+      <div class="wrap">
+        <div class="e-number">
+          <p class="e-number__value">[#]</p>
+          <p class="e-number__label">[Hours of learning and practice since Month YYYY]</p>
+        </div>
+        <div class="e-number">
+          <p class="e-number__value">[#]</p>
+          <p class="e-number__label">[Callout label]</p>
+        </div>
+        <div class="e-number">
+          <p class="e-number__value">[#]</p>
+          <p class="e-number__label">[Callout label]</p>
         </div>
       </div>
     </section>
@@ -96,36 +140,38 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="about-heading">
-      <div class="wrap wrap--content">
-        <h2 id="about-heading">About Me</h2>
-        <p>I came to Quality Engineering through a career built around solving problems, improving processes, and making complicated work easier to understand. Over the past five years, I've brought that perspective to software testing, test automation, quality strategy, and, more recently, AI evaluation.</p>
-        <p>I'm especially interested in the space where technical skill, curiosity, and quality thinking meet. Whether I'm investigating a failure, building automation, or watching how an AI model handles a question it wasn't built for, I want to understand not only whether something works, but why, for whom, and what could happen next.</p>
-        <div class="button-row">
-          <a class="button button--secondary" href="about.html">More About Me</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--gray" aria-labelledby="featured-heading">
+    <section class="e-work" aria-labelledby="work-heading">
       <div class="wrap">
-        <p class="eyebrow">Case Study</p>
-        <h2 id="featured-heading">Quality Is Glue Work</h2>
-        <p class="lead">As the first QA hire, I watched a long-overdue project lose the thread between client, product, and engineering. Here's what I mapped, what I proposed, and what I did on my own when the bigger plan had to wait.</p>
-        <div class="button-row">
-          <a class="button button--primary" href="quality-is-glue-work.html">Read the Case Study</a>
-        </div>
+        <h2 id="work-heading">Featured Work</h2>
+        <ul class="e-cards">
+          <li class="e-card">
+            <p class="e-card__type">Case Study</p>
+            <h3><a href="quality-is-glue-work.html">Quality Is Glue Work</a></h3>
+            <p>What a team of one can do for quality: mapping where a long-overdue project lost the thread, going back to the contract, and checking AI-drafted tests against their sources.</p>
+          </li>
+          <li class="e-card">
+            <p class="e-card__type">Paper · PNSQC 2023</p>
+            <h3><a href="nimble-not-agile.html">Nimble, not Agile</a></h3>
+            <p>Building a flexible QA framework for a team that uses Basecamp's Shape Up method instead of Scrum or Kanban.</p>
+          </li>
+          <li class="e-card">
+            <p class="e-card__type">Project</p>
+            <h3><a href="testing-my-own-portfolio.html">Testing My Own Portfolio</a></h3>
+            <p>With Claude, I turned my portfolio's publish checklist into Playwright and axe tests that run on every push. Here's what the first run caught.</p>
+          </li>
+        </ul>
+        <p class="e-work__more"><a href="case-studies.html">All case studies</a></p>
       </div>
     </section>
 
-    <section class="section section--teal" aria-labelledby="cta-heading">
-      <div class="wrap wrap--content">
-        <h2 id="cta-heading">Let's Talk Quality</h2>
-        <p>I'm interested in opportunities where I can help teams build confidence in their software through thoughtful testing, useful automation, and stronger quality practices.</p>
-        <p>If you're building a team, solving an interesting quality problem, or just want to talk about testing, I'd be glad to connect.</p>
-        <div class="button-row">
-          <a class="button button--reversed" href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Get in Touch on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
+    <section class="e-cta" aria-labelledby="cta-heading">
+      <div class="wrap">
+        <div>
+          <h2 id="cta-heading">Let's Talk Quality</h2>
+          <p>I'm interested in opportunities where I can help teams build confidence in their software through thoughtful testing, useful automation, and stronger quality practices.</p>
+          <p>If you're building a team, solving an interesting quality problem, or just want to talk about testing, I'd be glad to connect.</p>
         </div>
+        <a class="button button--accent" href="https://www.linkedin.com/in/zenziali" target="_blank" rel="noopener noreferrer">Get in Touch on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>
       </div>
     </section>
   </main>
@@ -139,5 +185,19 @@
       <p>&copy; 2026 Zenzi Ali</p>
     </div>
   </footer>
+
+  <script>
+    // Pause control for the scrolling banner (WCAG 2.2.2: moving content needs a way to stop it).
+    (function () {
+      var banner = document.querySelector('.e-banner');
+      var btn = banner && banner.querySelector('.e-banner__toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var paused = banner.classList.toggle('is-paused');
+        btn.setAttribute('aria-pressed', String(paused));
+        btn.firstChild.nodeValue = paused ? 'Play' : 'Pause';
+      });
+    })();
+  </script>
 </body>
 </html>
