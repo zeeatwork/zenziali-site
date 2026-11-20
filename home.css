@@ -114,29 +114,36 @@
   max-width: 640px;
 }
 
-/* White and navy block pair */
+/* White and navy block pair (option C: photo fills the white block).
+   The white column is capped at 600px so the 620px photo is never enlarged. */
 .e-split {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
+}
+
+@media (max-width: 760px) {
+  .e-split { grid-template-columns: 1fr; }
 }
 
 .e-split__intro {
   background: #ffffff;
-  padding: 72px var(--e-pad);
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 32px;
+  flex-direction: column;
 }
 
 .e-split__photo {
-  width: 180px;
-  height: auto;
   display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 620 / 640;
+  object-fit: cover;
+  object-position: 50% 35%;
 }
 
+.e-split__intro > div { padding: 28px var(--e-pad) 36px; }
+
 .e-split h2 {
-  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-size: clamp(2.5rem, 4vw, 3rem);
   font-weight: 600;
   line-height: 1;
   margin: 0;
@@ -153,6 +160,10 @@
   color: var(--e-cream);
   padding: 72px var(--e-pad);
   line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .e-split__story :focus-visible,
