@@ -135,7 +135,7 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 620 / 640;
+  aspect-ratio: 1 / 1; /* whole-pixel height keeps later sections on the pixel grid */
   object-fit: cover;
   object-position: 50% 35%;
 }
