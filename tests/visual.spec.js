@@ -15,12 +15,16 @@ for (const { path, selector, name } of sections) {
   test(`${name} matches the approved screenshot`, async ({ page }) => {
     await page.goto(path);
     await page.evaluate(() => document.fonts.ready);
-    // Snap the section to a whole pixel. Edits above it can leave it starting at
-    // a fraction of a pixel, which changes text anti-aliasing and fails the check
-    // even though the section itself looks the same.
+    // Hide everything above the section so it always starts at the same spot.
+    // Otherwise edits higher on the page can shift it by a fraction of a pixel,
+    // which changes text anti-aliasing and fails the check with no visible change.
     await page.locator(selector).evaluate((el) => {
-      const top = el.getBoundingClientRect().top + window.scrollY;
-      el.style.transform = `translateY(${Math.round(top) - top}px)`;
+      document.querySelector('header')?.style.setProperty('display', 'none');
+      for (let n = el; n && n !== document.body; n = n.parentElement) {
+        for (let s = n.previousElementSibling; s; s = s.previousElementSibling) {
+          s.style.setProperty('display', 'none');
+        }
+      }
     });
     await expect(page.locator(selector)).toHaveScreenshot(`${name}.png`, {
       animations: 'disabled',
