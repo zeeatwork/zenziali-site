@@ -15,6 +15,13 @@ for (const { path, selector, name } of sections) {
   test(`${name} matches the approved screenshot`, async ({ page }) => {
     await page.goto(path);
     await page.evaluate(() => document.fonts.ready);
+    // Snap the section to a whole pixel. Edits above it can leave it starting at
+    // a fraction of a pixel, which changes text anti-aliasing and fails the check
+    // even though the section itself looks the same.
+    await page.locator(selector).evaluate((el) => {
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      el.style.transform = `translateY(${Math.round(top) - top}px)`;
+    });
     await expect(page.locator(selector)).toHaveScreenshot(`${name}.png`, {
       animations: 'disabled',
       // Small tolerance for font smoothing differences between machines.
