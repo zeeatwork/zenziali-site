@@ -191,6 +191,11 @@
   line-height: 1.2;
 }
 
+.e-banner__text s {
+  color: #5f6779; /* 4.9:1 on ivory */
+  text-decoration-thickness: 3px;
+}
+
 .e-banner.is-paused .e-banner__track { animation-play-state: paused; }
 
 .e-banner__toggle:focus-visible { outline-offset: -6px; }
@@ -216,7 +221,7 @@
 @media (prefers-reduced-motion: reduce) {
   .e-banner__viewport { white-space: normal; padding: 26px var(--e-pad); }
   .e-banner__track { animation: none; display: block; }
-  .e-banner__text[aria-hidden="true"],
+  .e-banner__text + .e-banner__text,
   .e-banner__toggle { display: none; }
 }
 
