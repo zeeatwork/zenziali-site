@@ -15,6 +15,17 @@ for (const { path, selector, name } of sections) {
   test(`${name} matches the approved screenshot`, async ({ page }) => {
     await page.goto(path);
     await page.evaluate(() => document.fonts.ready);
+    // Hide everything above the section so it always starts at the same spot.
+    // Otherwise edits higher on the page can shift it by a fraction of a pixel,
+    // which changes text anti-aliasing and fails the check with no visible change.
+    await page.locator(selector).evaluate((el) => {
+      document.querySelector('header')?.style.setProperty('display', 'none');
+      for (let n = el; n && n !== document.body; n = n.parentElement) {
+        for (let s = n.previousElementSibling; s; s = s.previousElementSibling) {
+          s.style.setProperty('display', 'none');
+        }
+      }
+    });
     await expect(page.locator(selector)).toHaveScreenshot(`${name}.png`, {
       animations: 'disabled',
       // Small tolerance for font smoothing differences between machines.
