@@ -1,0 +1,141 @@
+/* Design E, site-wide base (Nov 2026).
+   Loaded on every page after styles.css. Each page's <body> gets class "e"
+   plus one accent class, which colors the header and hero block:
+   home = peach, About = yellow, Case Studies / Talks / essays = blue,
+   Projects / project write-ups = pink (matches the mocks canvas). */
+
+.e {
+  --e-navy: #1e2d4f;
+  --e-ivory: #f4ece1;
+  --e-cream: #f6ddbf;
+  --e-muted: #3b4660;   /* 9.6:1 on ivory */
+  --e-soft: #4a5670;    /* 7.2:1 on white */
+  --e-pad: 64px;
+  --e-accent: #f3cda4;
+
+  background: var(--e-ivory);
+  color: var(--e-navy);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+}
+
+.e-accent-peach  { --e-accent: #f3cda4; }
+.e-accent-yellow { --e-accent: #f5dfa0; }
+.e-accent-blue   { --e-accent: #bfdde0; }
+.e-accent-pink   { --e-accent: #f2c4ce; }
+
+@media (max-width: 640px) {
+  .e { --e-pad: 24px; }
+}
+
+.e h1,
+.e h2,
+.e h3 {
+  font-family: "Outfit", "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.e h2 { font-weight: 600; }
+
+.e a { color: var(--e-navy); }
+.e :focus-visible { outline: 3px solid var(--e-navy); outline-offset: 3px; }
+
+.e .eyebrow {
+  color: var(--e-navy);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+/* Header sits inside the accent block, flowing into the hero */
+.e .site-header {
+  background: var(--e-accent);
+  border-bottom: 0;
+}
+
+.e .site-header .wrap { padding-top: 32px; padding-bottom: 0; }
+
+.e .site-nav a {
+  color: var(--e-navy);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.e .site-nav a:hover,
+.e .site-nav a[aria-current="page"] {
+  color: var(--e-navy);
+  border-bottom-color: var(--e-navy);
+}
+
+.e .site-nav li:last-child a {
+  border-color: var(--e-navy);
+  color: var(--e-navy);
+}
+
+.e .site-nav li:last-child a:hover {
+  background: var(--e-navy);
+  color: var(--e-cream);
+}
+
+.e .skip-link { background: var(--e-navy); color: var(--e-cream); }
+
+/* Hero: accent color block with a large headline */
+.e .hero {
+  background: var(--e-accent);
+  padding: 56px 0 88px;
+}
+
+.e .hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+}
+
+.e .hero .lead { font-size: 1.25rem; line-height: 1.5; }
+
+/* Section bands: white instead of warm gray, navy instead of teal */
+.e .section--gray { background: #ffffff; }
+
+.e .section--teal {
+  background: var(--e-navy);
+  color: var(--e-cream);
+}
+
+.e .section--teal a:not(.button) { color: var(--e-cream); }
+.e .section--teal .eyebrow { color: var(--e-cream); }
+
+.e .section--teal :focus-visible,
+.e .site-footer :focus-visible { outline-color: var(--e-accent); }
+
+/* Buttons: square, navy or accent */
+.e .button {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border: 2px solid var(--e-navy);
+  border-radius: 0;
+}
+
+.e .button--primary { background: var(--e-navy); color: var(--e-cream); }
+
+.e .button--reversed,
+.e .button--accent {
+  display: inline-block;
+  background: var(--e-accent);
+  color: var(--e-navy);
+  border-color: var(--e-accent);
+}
+
+/* Cards: square corners to match the color-block look */
+.e .card { border-radius: 0; }
+
+/* Footer */
+.e .site-footer {
+  background: var(--e-navy);
+  color: var(--e-cream);
+  border-top: 1px solid rgba(246, 221, 191, 0.25);
+}
+
+.e .site-footer a { color: var(--e-cream); }

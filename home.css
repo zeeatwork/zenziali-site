@@ -1,96 +1,17 @@
-/* Homepage design E (color blocks, scrolling banner, number callouts).
-   Loaded only on index.html, scoped to body.home-e, so other pages keep
-   the current styles until they get their own E pass.
-   Mock: "zenziali.com homepage mocks" design canvas, board E (Nov 14, 2026). */
+/* Homepage design E: color blocks, scrolling banner, number callouts.
+   Loaded only on index.html, after e-base.css (shared header, nav, buttons,
+   fonts, footer). Mock: "zenziali.com homepage mocks" canvas, board E. */
 
-.home-e {
-  --e-navy: #1e2d4f;
-  --e-ivory: #f4ece1;
-  --e-cream: #f6ddbf;
-  --e-peach: #f3cdA4;   /* hero and button accent */
-  --e-muted: #3b4660;   /* 9.6:1 on ivory */
-  --e-soft: #4a5670;    /* 7.2:1 on white */
-  --e-line: #c9bca9;
-  --e-pad: 64px;
-
-  background: var(--e-ivory);
-  color: var(--e-navy);
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 1.0625rem;
-}
-
-@media (max-width: 640px) {
-  .home-e { --e-pad: 24px; }
-}
-
-.home-e h1,
-.home-e h2,
-.home-e h3 {
-  font-family: "Outfit", "Inter", sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.home-e a { color: var(--e-navy); }
-.home-e :focus-visible { outline: 3px solid var(--e-navy); outline-offset: 3px; }
+.home-e { --e-line: #c9bca9; }
 
 .home-e .wrap {
   max-width: 1080px;
   padding: 0 var(--e-pad);
 }
 
-/* Header sits inside the accent hero block */
-.home-e .site-header {
-  background: var(--e-peach);
-  border-bottom: 0;
-}
-
-.home-e .site-header .wrap { padding-top: 32px; padding-bottom: 0; }
-
-.home-e .site-nav a {
-  color: var(--e-navy);
-  font-size: 0.9375rem;
-  font-weight: 500;
-}
-
-.home-e .site-nav a:hover,
-.home-e .site-nav a[aria-current="page"] {
-  color: var(--e-navy);
-  border-bottom-color: var(--e-navy);
-}
-
-.home-e .site-nav li:last-child a {
-  border-color: var(--e-navy);
-  color: var(--e-navy);
-}
-
-.home-e .site-nav li:last-child a:hover {
-  background: var(--e-navy);
-  color: var(--e-cream);
-}
-
-.home-e .skip-link { background: var(--e-navy); color: var(--e-cream); }
-
-/* Buttons */
-.home-e .button {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  padding: 14px 28px;
-  border: 2px solid var(--e-navy);
-}
-
-.home-e .button--primary { background: var(--e-navy); color: var(--e-cream); }
-
-.home-e .button--accent {
-  display: inline-block;
-  background: var(--e-peach);
-  color: var(--e-navy);
-  border-color: var(--e-peach);
-}
-
 /* Hero */
 .e-hero {
-  background: var(--e-peach);
+  background: var(--e-accent);
   padding: 72px 0 104px;
 }
 
@@ -167,9 +88,8 @@
 }
 
 .e-split__story :focus-visible,
-.e-cta :focus-visible,
-.home-e .site-footer :focus-visible {
-  outline-color: var(--e-peach);
+.e-cta :focus-visible {
+  outline-color: var(--e-accent);
 }
 
 /* Scrolling banner */
@@ -343,11 +263,3 @@
 .e-cta .wrap > div { max-width: 640px; }
 
 .e-cta h2 { font-size: 2.25rem; margin-bottom: 20px; }
-
-.home-e .site-footer {
-  background: var(--e-navy);
-  color: var(--e-cream);
-  border-top: 1px solid rgba(246, 221, 191, 0.25);
-}
-
-.home-e .site-footer a { color: var(--e-cream); }
