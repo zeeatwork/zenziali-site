@@ -143,3 +143,17 @@ for (const { path, name } of pages) {
     expect(res.status(), `missing share image ${img}`).toBe(200);
   });
 }
+
+for (const { path, name } of pages) {
+  test(`${name} has a tab icon and phone home-screen icon`, async ({ page, request }, testInfo) => {
+    test.skip(testInfo.project.name === 'phone', 'Same tags on every viewport');
+    await page.goto(path);
+    for (const rel of ['icon', 'apple-touch-icon']) {
+      const href = await page.locator(`link[rel="${rel}"]`).getAttribute('href');
+      expect(href, `missing <link rel="${rel}">`).toBeTruthy();
+      const res = await request.get(new URL(href, page.url()).href);
+      expect(res.status(), `broken ${rel}: ${href}`).toBe(200);
+      expect(res.headers()['content-type'], `${rel} should be a PNG`).toContain('image/png');
+    }
+  });
+}
